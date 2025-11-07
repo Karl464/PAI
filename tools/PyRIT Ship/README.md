@@ -14,7 +14,7 @@ References:
 Before executing the **Intruder Attack**, ensure the following components are properly set up:
 
 1. **Install Burp Suite (Community or Pro).**
-2. **Install the PyRIT Burp Suite Extension:** Set up the extension to enable prompt injection testing within Burp Suite. For more details follow next instructions:  [1. Build and Install PyRIT-Ship Burp Suite Extension](PyRIT Ship/1. Build and Install PyRIT-Ship Burp Suite Extension.md)
+2. **Install the PyRIT Burp Suite Extension:** Set up the extension to enable prompt injection testing within Burp Suite. For more details follow next instructions:  [1. Build and Install PyRIT-Ship Burp Suite Extension](PyRIT%20Ship/1.%20Build%20and%20Install%20PyRIT-Ship%20Burp%20Suite%20Extension.md)
 3. **Generate and Configure Your OpenAI API Key:** Create an API key from [OpenAI Platform](https://platform.openai.com/account/api-keys), then store it securely in a `.env` file for use by PyRIT.    For more details follow next instructions:  [OpenAI API with Python](PyRIT Ship/2. OpenAI API with Python.md)
 4. **Deploy the PyRIT Server:** Launch the PyRIT server locally to orchestrate attacks, manage datasets, and evaluate responses through the scoring engine. For more details follow next instructions:  [PyRIT Ship Server Setup Guide](PyRIT Ship/3. PyRIT Ship Server Setup Guide (Windows).md)
 	 
