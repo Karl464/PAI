@@ -12,7 +12,7 @@
 
 ### 🧠 PyRIT Agent Behavior and Dataset Strategy
 
-In this setup, the **PyRIT Agent** refers to the **OpenAI model** selected in step 2 (e.g., `gpt-3.5-turbo` or `gpt-4o`). PyRIT dynamically **parameterizes the model to act as an attack agent**, systematically executing a wide range of adversarial prompts derived from curated datasets.
+In this setup, the **PyRIT Agent** refers to the **OpenAI model** selected in step 3 (e.g., `gpt-3.5-turbo` or `gpt-4o`). PyRIT dynamically **parameterizes the model to act as an attack agent**, systematically executing a wide range of adversarial prompts derived from curated datasets.
 
 These prompts are often **encoded or obfuscated using converters** to bypass content filters and moderation systems. The goal is to simulate real-world adversarial behavior and evaluate the model’s robustness against various attack vectors.
 
