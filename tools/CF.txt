@@ -1,4 +1,0 @@
-tools
-
-https://github.com/microsoft/PyRIT-Ship/blob/main/docs/burp_extension.md
-

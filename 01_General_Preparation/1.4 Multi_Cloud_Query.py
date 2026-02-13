@@ -60,5 +60,5 @@ def run_prompt_test(provider):
 
 if __name__ == "__main__":
     # Change "local" to "openai" or "azure" to switch targets
-    selected_provider = "local" 
+    selected_provider = "azure" 
     run_prompt_test(selected_provider)
