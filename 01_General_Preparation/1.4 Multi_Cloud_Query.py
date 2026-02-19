@@ -1,39 +1,60 @@
 import os
 import asyncio
-from openai import OpenAI, AzureOpenAI
 from dotenv import load_dotenv
+from dotenv import find_dotenv
+from openai import OpenAI, AzureOpenAI
+
+# Encuentra el archivo .env que se va a usar 
+env_path = find_dotenv() 
+print("📂 Archivo .env detectado:", env_path)
 
 # Load your .env file
 load_dotenv()
 
+
 def get_client_and_model(provider="local"):
+
     """
     Returns the appropriate client and model name based on your environment.
     """
-    if provider == "azure":
+    if provider == "openai":
+    # Standard OpenAI Cloud client
+        client = OpenAI(
+            api_key=os.getenv("PLATFORM_OPENAI_CHAT_API_KEY")
+        )
+        model = os.getenv("PLATFORM_OPENAI_CHAT_GPT4O_MODEL","gpt-4o")
+
+    elif provider == "azure":
         # Azure requires the specialized AzureOpenAI client
         client = AzureOpenAI(
-            api_key=os.getenv("AZURE_OPENAI_GPT4O_CHAT_KEY"),
-            azure_endpoint=os.getenv("AZURE_OPENAI_GPT4O_CHAT_ENDPOINT"),
+            azure_endpoint=os.getenv("AZURE_OPENAI_GPT4O_ENDPOINT", ""),
+            api_key=os.getenv("AZURE_OPENAI_GPT4O_KEY"),
             api_version="2024-02-01" # Standard stable version
         )
-        model = os.getenv("AZURE_OPENAI_GPT4O_CHAT_DEPLOYMENT")
+        model = os.getenv("AZURE_OPENAI_GPT4O_MODEL","")
         
-    elif provider == "openai":
-        # Standard OpenAI Cloud client
+        print("EndPoint: ",client._azure_endpoint)
+        
+    elif provider == "local":
+    # Standard OpenAI Cloud client
+        client = OpenAI(
+            base_url=os.getenv("LOCAL_GPT35turbo_CHAT_ENDPOINT"),
+            api_key=os.getenv("LOCAL_GPT35turbo_CHAT_KEY")
+        )
+        model = os.getenv("LOCAL_GPT35turbo_CHAT_MODEL","gpt-4o")
+        
+    else:
+    # Standard OpenAI Cloud client
         client = OpenAI(
             api_key=os.getenv("OPENAI_CHAT_KEY")
         )
-        model = os.getenv("OPENAI_CHAT_MODEL")
+        model = os.getenv("OPENAI_CHAT_MODEL","gpt-4o")
 
-    elif provider == "local":
-        # Local (LM Studio) uses the standard client with a local base_url
-        client = OpenAI(
-            # IMPORTANT: base_url must end in /v1 for LM Studio compatibility
-            base_url="http://127.0.0.1:1234/v1",
-            api_key="lm-studio" # Local models require a non-empty string
-        )
-        model = os.getenv("LOCAL_GPT35turbo_CHAT_MODEL")
+        print("EndPoint: ",client._base_url)
+
+    print("api_key: ",client.api_key)
+    print("model: ",model)
+    print("URL: ",client._base_url)
 
     return client, model
 
@@ -58,7 +79,7 @@ def run_prompt_test(provider):
     except Exception as e:
         print(f"Error connecting to {provider}: {e}")
 
+
 if __name__ == "__main__":
-    # Change "local" to "openai" or "azure" to switch targets
-    selected_provider = "azure" 
+    selected_provider = "local" 
     run_prompt_test(selected_provider)
