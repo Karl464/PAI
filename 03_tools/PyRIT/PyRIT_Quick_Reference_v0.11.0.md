@@ -13,8 +13,8 @@ cd PyRIT
 git checkout v0.11.0
 
 # Create virtual environment (Python 3.11 recommended)
-py -3.11 -m venv venv           # Windows
-python3.11 -m venv venv         # Linux/Mac
+py -3.13 -m venv venv           # Windows
+python3.13 -m venv venv         # Linux/Mac
 
 # Activate
 .\venv\Scripts\Activate.ps1     # Windows
@@ -22,6 +22,9 @@ source venv/bin/activate        # Linux/Mac
 
 # Install from source
 pip install .
+
+# Or install PyRIT from repository
+pip install pyrit==0.11.0
 
 # Verify installation
 python -c "import pyrit; print(pyrit.__version__)"
