@@ -1,0 +1,5620 @@
+PyRIT v0.11.0 Full Component Map
+============================================================
+
+
+MODULE: pyrit.analytics
+-----------------------
+ [Variable] conversation_analytics
+ [Variable] result_analysis
+ [Variable] text_matching
+
+MODULE: pyrit.analytics.conversation_analytics
+----------------------------------------------
+ [Class]    ConversationAnalytics
+    [Method]   __init__
+    [Method]   get_prompt_entries_with_same_converted_content
+    [Method]   get_similar_chat_messages_by_embedding
+ [Function] cosine_similarity
+ [Variable] np
+
+MODULE: pyrit.analytics.result_analysis
+---------------------------------------
+ [Class]    AttackStats
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Function] _compute_stats
+ [Function] analyze_results
+
+MODULE: pyrit.analytics.text_matching
+-------------------------------------
+ [Class]    ApproximateTextMatching
+    [Method]   __init__
+    [Method]   _calculate_ngram_overlap
+    [Method]   get_overlap_score
+    [Method]   is_match
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    ExactTextMatching
+    [Method]   __init__
+    [Method]   is_match
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    TextMatching
+    [Method]   is_match
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+
+MODULE: pyrit.auth
+------------------
+ [Variable] auth_config
+ [Variable] authenticator
+ [Variable] azure_auth
+ [Variable] azure_storage_auth
+ [Variable] copilot_authenticator
+ [Variable] manual_copilot_authenticator
+
+MODULE: pyrit.auth.auth_config
+------------------------------
+ [Variable] AZURE_AI_SERVICES_DEFAULT_SCOPE
+ [Variable] REFRESH_TOKEN_BEFORE_MSEC
+
+MODULE: pyrit.auth.authenticator
+--------------------------------
+ [Class]    Authenticator
+    [Method]   get_token
+    [Method]   get_token_async
+    [Method]   refresh_token
+    [Method]   refresh_token_async
+    [Attribute] _abc_impl
+ [Variable] abc
+ [Variable] annotations
+
+MODULE: pyrit.auth.azure_auth
+-----------------------------
+ [Class]    AzureAuth
+    [Method]   __init__
+    [Method]   _set_default_token
+    [Method]   get_token
+    [Method]   refresh_token
+    [Attribute] _abc_impl
+ [Class]    TokenProviderCredential
+    [Method]   __init__
+    [Method]   get_token
+ [Function] get_access_token_from_azure_cli
+ [Function] get_access_token_from_azure_msi
+ [Function] get_access_token_from_interactive_login
+ [Function] get_access_token_from_msa_public_client
+ [Function] get_azure_async_token_provider
+ [Function] get_azure_openai_auth
+ [Function] get_azure_token_provider
+ [Function] get_default_azure_scope
+ [Function] get_speech_config
+ [Function] get_speech_config_from_default_azure_credential
+ [Variable] REFRESH_TOKEN_BEFORE_MSEC
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] msal
+ [Variable] time
+
+MODULE: pyrit.auth.azure_storage_auth
+-------------------------------------
+ [Class]    AzureStorageAuth
+    [Method]   get_sas_token
+    [Method]   get_user_delegation_key
+
+MODULE: pyrit.auth.copilot_authenticator
+----------------------------------------
+ [Class]    CopilotAuthenticator
+    [Method]   __init__
+    [Method]   _clear_token_cache
+    [Method]   _create_persistent_cache
+    [Method]   _fetch_access_token_with_playwright
+    [Method]   _get_cached_token_if_available_and_valid
+    [Method]   _run_playwright_browser_automation
+    [Method]   _run_playwright_in_thread
+    [Method]   _save_token_to_cache
+    [Method]   get_claims
+    [Method]   get_token_async
+    [Method]   refresh_token_async
+    [Attribute] CACHE_FILE_NAME
+    [Attribute] DEFAULT_ELEMENT_TIMEOUT_SECONDS
+    [Attribute] DEFAULT_NETWORK_RETRIES
+    [Attribute] DEFAULT_TOKEN_CAPTURE_TIMEOUT
+    [Attribute] EXPIRY_BUFFER_SECONDS
+    [Attribute] _abc_impl
+ [Variable] PYRIT_CACHE_PATH
+ [Variable] asyncio
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+ [Variable] sys
+
+MODULE: pyrit.auth.manual_copilot_authenticator
+-----------------------------------------------
+ [Class]    ManualCopilotAuthenticator
+    [Method]   __init__
+    [Method]   get_claims
+    [Method]   get_token
+    [Method]   get_token_async
+    [Method]   refresh_token
+    [Method]   refresh_token_async
+    [Attribute] ACCESS_TOKEN_ENV_VAR
+    [Attribute] _abc_impl
+ [Variable] jwt
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.auxiliary_attacks
+-------------------------------
+
+MODULE: pyrit.backend
+---------------------
+
+MODULE: pyrit.backend.main
+--------------------------
+ [Function] global_exception_handler_async
+ [Function] setup_frontend
+ [Function] startup_event_async
+ [Variable] DEV_MODE
+ [Variable] health
+ [Variable] os
+ [Variable] pyrit
+ [Variable] sys
+ [Variable] version
+
+MODULE: pyrit.backend.models
+----------------------------
+
+MODULE: pyrit.backend.routes
+----------------------------
+ [Variable] health
+ [Variable] version
+
+MODULE: pyrit.backend.routes.health
+-----------------------------------
+ [Function] health_check_async
+
+MODULE: pyrit.backend.routes.version
+------------------------------------
+ [Class]    VersionResponse
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Function] get_version_async
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] pyrit
+
+MODULE: pyrit.backend.services
+------------------------------
+
+MODULE: pyrit.cli
+-----------------
+
+MODULE: pyrit.cli.frontend_core
+-------------------------------
+ [Class]    FrontendCore
+    [Method]   __init__
+    [Method]   initialize_async
+    [Attribute] initializer_registry
+    [Attribute] scenario_registry
+ [Function] _argparse_validator
+ [Function] _format_wrapped_text
+ [Function] _print_header
+ [Function] format_initializer_metadata
+ [Function] format_scenario_metadata
+ [Function] get_default_initializer_discovery_path
+ [Function] list_initializers_async
+ [Function] list_scenarios_async
+ [Function] non_negative_int
+ [Function] parse_memory_labels
+ [Function] parse_run_arguments
+ [Function] positive_int
+ [Function] print_initializers_list_async
+ [Function] print_scenarios_list_async
+ [Function] resolve_env_files
+ [Function] resolve_env_files_argparse
+ [Function] resolve_initialization_scripts
+ [Function] run_scenario_async
+ [Function] validate_database
+ [Function] validate_database_argparse
+ [Function] validate_integer
+ [Function] validate_log_level
+ [Function] validate_log_level_argparse
+ [Variable] ARG_HELP
+ [Variable] AZURE_SQL
+ [Variable] HAS_TERMCOLOR
+ [Variable] IN_MEMORY
+ [Variable] SQLITE
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] sys
+ [Variable] termcolor
+
+MODULE: pyrit.cli.pyrit_scan
+----------------------------
+ [Function] main
+ [Function] parse_args
+ [Variable] asyncio
+ [Variable] frontend_core
+ [Variable] sys
+
+MODULE: pyrit.cli.pyrit_shell
+-----------------------------
+ [Class]    PyRITShell
+    [Method]   __init__
+    [Method]   _background_init
+    [Method]   _ensure_initialized
+    [Method]   default
+    [Method]   do_EOF
+    [Method]   do_clear
+    [Method]   do_exit
+    [Method]   do_help
+    [Method]   do_list_initializers
+    [Method]   do_list_scenarios
+    [Method]   do_print_scenario
+    [Method]   do_q
+    [Method]   do_quit
+    [Method]   do_run
+    [Method]   do_scenario_history
+    [Method]   emptyline
+    [Attribute] doc_header
+    [Attribute] doc_leader
+    [Attribute] identchars
+    [Attribute] intro
+    [Attribute] lastcmd
+    [Attribute] misc_header
+    [Attribute] nohelp
+    [Attribute] prompt
+    [Attribute] ruler
+    [Attribute] undoc_header
+    [Attribute] use_rawinput
+ [Function] main
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] asyncio
+ [Variable] cmd
+ [Variable] frontend_core
+ [Variable] sys
+ [Variable] threading
+
+MODULE: pyrit.common
+--------------------
+ [Variable] REQUIRED_VALUE
+ [Variable] data_url_converter
+ [Variable] default_values
+ [Variable] deprecation
+ [Variable] display_response
+ [Variable] download_hf_model
+ [Variable] net_utility
+ [Variable] notebook_utils
+ [Variable] path
+ [Variable] singleton
+ [Variable] turn_off_transformers_warning
+ [Variable] utils
+ [Variable] yaml_loadable
+
+MODULE: pyrit.common.apply_defaults
+-----------------------------------
+ [Class]    DefaultValueScope
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] include_subclasses
+ [Class]    GlobalDefaultValues
+    [Method]   __init__
+    [Method]   get_default_value
+    [Method]   reset_defaults
+    [Method]   set_default_value
+    [Attribute] all_defaults
+ [Class]    _RequiredValueSentinel
+    [Method]   __bool__
+    [Method]   __repr__
+ [Function] apply_defaults
+ [Function] apply_defaults_to_method
+ [Function] get_global_default_values
+ [Function] reset_default_values
+ [Function] set_default_value
+ [Function] set_global_variable
+ [Variable] REQUIRED_VALUE
+ [Variable] T
+ [Variable] _global_default_values
+ [Variable] functools
+ [Variable] inspect
+ [Variable] logger
+ [Variable] logging
+ [Variable] sys
+
+MODULE: pyrit.common.csv_helper
+-------------------------------
+ [Function] read_csv
+ [Function] write_csv
+ [Variable] csv
+
+MODULE: pyrit.common.data_url_converter
+---------------------------------------
+ [Function] convert_local_image_to_data_url
+ [Variable] AZURE_OPENAI_GPT4O_SUPPORTED_IMAGE_FORMATS
+
+MODULE: pyrit.common.default_values
+-----------------------------------
+ [Function] get_non_required_value
+ [Function] get_required_value
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.common.deprecation
+--------------------------------
+ [Function] print_deprecation_message
+ [Variable] annotations
+ [Variable] warnings
+
+MODULE: pyrit.common.display_response
+-------------------------------------
+ [Function] display_image_response
+ [Variable] Image
+ [Variable] io
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.common.download_hf_model
+--------------------------------------
+ [Function] download_chunk
+ [Function] download_file
+ [Function] download_files
+ [Function] download_specific_files
+ [Function] get_available_files
+ [Variable] asyncio
+ [Variable] httpx
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.common.json_helper
+--------------------------------
+ [Function] read_json
+ [Function] read_jsonl
+ [Function] write_json
+ [Function] write_jsonl
+ [Variable] json
+
+MODULE: pyrit.common.logger
+---------------------------
+ [Variable] LOG_PATH
+ [Variable] console_handler
+ [Variable] file_handler
+ [Variable] fmt
+ [Variable] log_formatter
+ [Variable] logger
+ [Variable] logging
+ [Variable] sys
+
+MODULE: pyrit.common.net_utility
+--------------------------------
+ [Function] extract_url_parameters
+ [Function] get_httpx_client
+ [Function] make_request_and_raise_if_error_async
+ [Function] remove_url_parameters
+ [Variable] httpx
+
+MODULE: pyrit.common.notebook_utils
+-----------------------------------
+ [Function] is_in_ipython_session
+
+MODULE: pyrit.common.path
+-------------------------
+ [Function] get_default_data_path
+ [Function] in_git_repo
+ [Variable] CONFIGURATION_DIRECTORY_PATH
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] DATASETS_PATH
+ [Variable] DB_DATA_PATH
+ [Variable] DOCS_CODE_PATH
+ [Variable] DOCS_PATH
+ [Variable] EXECUTOR_RED_TEAM_PATH
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] EXECUTOR_SIMULATED_TARGET_PATH
+ [Variable] HARM_DEFINITION_PATH
+ [Variable] HOME_PATH
+ [Variable] JAILBREAK_TEMPLATES_PATH
+ [Variable] LOG_PATH
+ [Variable] PATHS_DICT
+ [Variable] PYRIT_CACHE_PATH
+ [Variable] PYRIT_PATH
+ [Variable] SCORER_CONTENT_CLASSIFIERS_PATH
+ [Variable] SCORER_EVALS_HARM_PATH
+ [Variable] SCORER_EVALS_LIKERT_PATH
+ [Variable] SCORER_EVALS_OBJECTIVE_PATH
+ [Variable] SCORER_EVALS_PATH
+ [Variable] SCORER_EVALS_REFUSAL_SCORER_PATH
+ [Variable] SCORER_EVALS_TRUE_FALSE_PATH
+ [Variable] SCORER_LIKERT_PATH
+ [Variable] SCORER_SCALES_PATH
+ [Variable] SCORER_SEED_PROMPT_PATH
+ [Variable] pathlib
+
+MODULE: pyrit.common.question_answer_helpers
+--------------------------------------------
+ [Function] construct_evaluation_prompt
+
+MODULE: pyrit.common.singleton
+------------------------------
+ [Class]    Singleton
+    [Method]   __call__
+ [!] Could not inspect module: __abstractmethods__
+
+MODULE: pyrit.common.text_helper
+--------------------------------
+ [Function] read_txt
+ [Function] write_txt
+
+MODULE: pyrit.common.tool_configs
+---------------------------------
+ [Class]    OpenAIToolType
+    [Attribute] CODE_INTERPRETER
+    [Attribute] FILE_SEARCH
+    [Attribute] WEB_SEARCH_PREVIEW
+ [Function] code_interpreter_tool
+ [Function] file_search_tool
+ [Function] web_search_tool
+
+MODULE: pyrit.common.turn_off_transformers_warning
+--------------------------------------------------
+ [Variable] os
+
+MODULE: pyrit.common.utils
+--------------------------
+ [Function] combine_dict
+ [Function] combine_list
+ [Function] get_kwarg_param
+ [Function] get_random_indices
+ [Function] to_sha256
+ [Function] verify_and_resolve_path
+ [Function] warn_if_set
+ [Variable] _T
+ [Variable] annotations
+ [Variable] hashlib
+ [Variable] logger
+ [Variable] logging
+ [Variable] math
+ [Variable] random
+
+MODULE: pyrit.common.yaml_loadable
+----------------------------------
+ [Class]    YamlLoadable
+    [Attribute] _abc_impl
+ [Variable] T
+ [Variable] abc
+ [Variable] yaml
+
+MODULE: pyrit.datasets
+----------------------
+ [Variable] jailbreak
+ [Variable] local
+ [Variable] remote
+ [Variable] seed_datasets
+
+MODULE: pyrit.embedding
+-----------------------
+ [Variable] openai_text_embedding
+
+MODULE: pyrit.embedding._text_embedding
+---------------------------------------
+ [Class]    _TextEmbedding
+    [Method]   __init__
+    [Method]   generate_text_embedding
+    [Attribute] _abc_impl
+ [Variable] abc
+ [Variable] tenacity
+
+MODULE: pyrit.embedding.openai_text_embedding
+---------------------------------------------
+ [Class]    OpenAITextEmbedding
+    [Method]   __init__
+    [Method]   generate_text_embedding
+    [Method]   generate_text_embedding_async
+    [Attribute] API_KEY_ENVIRONMENT_VARIABLE
+    [Attribute] ENDPOINT_URI_ENVIRONMENT_VARIABLE
+    [Attribute] MODEL_ENVIRONMENT_VARIABLE
+    [Attribute] _abc_impl
+ [Variable] asyncio
+ [Variable] default_values
+ [Variable] tenacity
+
+MODULE: pyrit.exceptions
+------------------------
+ [Variable] exception_classes
+ [Variable] exception_context
+ [Variable] exceptions_helpers
+
+MODULE: pyrit.exceptions.exception_classes
+------------------------------------------
+ [Class]    BadRequestException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    EmptyResponseException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    InvalidJsonException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    MissingPromptPlaceholderException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    PyritException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    RateLimitException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    ServerErrorException
+    [Method]   __init__
+    [Method]   process_exception
+    [Attribute] _abc_impl
+    [Attribute] args
+ [Class]    _DynamicStopAfterAttempt
+    [Method]   __call__
+    [Method]   __init__
+    [Attribute] _abc_impl
+ [Class]    _DynamicWaitRandomExponential
+    [Method]   __call__
+    [Method]   __init__
+    [Attribute] _abc_impl
+ [Function] _get_custom_result_retry_max_num_attempts
+ [Function] _get_retry_wait_max_seconds
+ [Function] _get_retry_wait_min_seconds
+ [Function] get_retry_max_num_attempts
+ [Function] handle_bad_request_exception
+ [Function] pyrit_custom_result_retry
+ [Function] pyrit_json_retry
+ [Function] pyrit_placeholder_retry
+ [Function] pyrit_target_retry
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.exceptions.exception_context
+------------------------------------------
+ [Class]    ComponentRole
+    [Attribute] ADVERSARIAL_CHAT
+    [Attribute] AUXILIARY_SCORER
+    [Attribute] AUXILIARY_SCORER_TARGET
+    [Attribute] CONVERTER
+    [Attribute] CONVERTER_TARGET
+    [Attribute] OBJECTIVE_SCORER
+    [Attribute] OBJECTIVE_SCORER_TARGET
+    [Attribute] OBJECTIVE_TARGET
+    [Attribute] REFUSAL_SCORER
+    [Attribute] REFUSAL_SCORER_TARGET
+    [Attribute] UNKNOWN
+ [Class]    ExecutionContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   get_exception_details
+    [Method]   get_retry_context_string
+    [Attribute] attack_identifier
+    [Attribute] attack_strategy_name
+    [Attribute] component_identifier
+    [Attribute] component_name
+    [Attribute] component_role
+    [Attribute] endpoint
+    [Attribute] objective
+    [Attribute] objective_target_conversation_id
+ [Class]    ExecutionContextManager
+    [Method]   __enter__
+    [Method]   __eq__
+    [Method]   __exit__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _token
+ [Function] clear_execution_context
+ [Function] execution_context
+ [Function] get_execution_context
+ [Function] set_execution_context
+ [Variable] _execution_context
+
+MODULE: pyrit.exceptions.exceptions_helpers
+-------------------------------------------
+ [Function] extract_json_from_string
+ [Function] log_exception
+ [Function] remove_end_md_json
+ [Function] remove_markdown_json
+ [Function] remove_start_md_json
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] re
+ [Variable] time
+
+MODULE: pyrit.executor
+----------------------
+
+MODULE: pyrit.executor.attack
+-----------------------------
+ [Variable] component
+ [Variable] core
+ [Variable] multi_turn
+ [Variable] printer
+ [Variable] single_turn
+
+MODULE: pyrit.executor.attack.component
+---------------------------------------
+ [Variable] conversation_manager
+ [Variable] prepended_conversation_config
+
+MODULE: pyrit.executor.attack.component.conversation_manager
+------------------------------------------------------------
+ [Class]    ConversationManager
+    [Method]   __init__
+    [Method]   _apply_converters_async
+    [Method]   _handle_non_chat_target_async
+    [Method]   _process_prepended_for_chat_target_async
+    [Method]   add_prepended_conversation_to_memory_async
+    [Method]   get_conversation
+    [Method]   get_last_message
+    [Method]   initialize_context_async
+    [Method]   set_system_prompt
+ [Class]    ConversationState
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] turn_count
+ [Function] build_conversation_context_string_async
+ [Function] get_adversarial_chat_messages
+ [Function] get_prepended_turn_count
+ [Function] mark_messages_as_simulated
+ [Variable] TYPE_CHECKING
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.component.prepended_conversation_config
+---------------------------------------------------------------------
+ [Class]    PrependedConversationConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   get_message_normalizer
+    [Attribute] message_normalizer
+    [Attribute] non_chat_target_behavior
+ [Variable] annotations
+
+MODULE: pyrit.executor.attack.core
+----------------------------------
+ [Variable] AttackParamsT
+ [Variable] AttackStrategyContextT
+ [Variable] AttackStrategyResultT
+ [Variable] attack_config
+ [Variable] attack_executor
+ [Variable] attack_parameters
+ [Variable] attack_strategy
+
+MODULE: pyrit.executor.attack.core.attack_config
+------------------------------------------------
+ [Class]    AttackAdversarialConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _DEFAULT_SEED_PROMPT
+    [Attribute] seed_prompt
+    [Attribute] system_prompt_path
+ [Class]    AttackConverterConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Class]    AttackScoringConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __post_init__
+    [Method]   __repr__
+    [Attribute] objective_scorer
+    [Attribute] refusal_scorer
+    [Attribute] use_score_as_feedback
+
+MODULE: pyrit.executor.attack.core.attack_executor
+--------------------------------------------------
+ [Class]    AttackExecutor
+    [Method]   __init__
+    [Method]   _execute_with_params_list_async
+    [Method]   _process_execution_results
+    [Method]   execute_attack_async
+    [Method]   execute_attack_from_seed_groups_async
+    [Method]   execute_multi_objective_attack_async
+    [Method]   execute_multi_turn_attacks_async
+    [Method]   execute_single_turn_attacks_async
+    [Attribute] _MultiTurnContextT
+    [Attribute] _SingleTurnContextT
+ [Class]    AttackExecutorResult
+    [Method]   __eq__
+    [Method]   __getitem__
+    [Method]   __init__
+    [Method]   __iter__
+    [Method]   __len__
+    [Method]   __repr__
+    [Method]   get_results
+    [Method]   raise_if_incomplete
+    [Attribute] all_completed
+    [Attribute] exceptions
+    [Attribute] has_incomplete
+ [Variable] AttackResultT
+ [Variable] AttackStrategyContextT
+ [Variable] AttackStrategyResultT
+ [Variable] TYPE_CHECKING
+ [Variable] asyncio
+
+MODULE: pyrit.executor.attack.core.attack_parameters
+----------------------------------------------------
+ [Class]    AttackParameters
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Method]   __str__
+    [Attribute] next_message
+    [Attribute] prepended_conversation
+ [Variable] AttackParamsT
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] dataclasses
+
+MODULE: pyrit.executor.attack.core.attack_strategy
+--------------------------------------------------
+ [Class]    AttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] memory_labels
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] start_time
+ [Class]    AttackStrategy
+    [Method]   __init__
+    [Method]   execute_async
+    [Method]   get_attack_scoring_config
+    [Method]   get_objective_target
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    _DefaultAttackStrategyEventHandler
+    [Method]   __init__
+    [Method]   _log_attack_outcome
+    [Method]   _on
+    [Method]   _on_post_execute
+    [Method]   _on_pre_execute
+    [Method]   on_event
+    [Attribute] _abc_impl
+ [Variable] AttackParamsT
+ [Variable] AttackStrategyContextT
+ [Variable] AttackStrategyResultT
+ [Variable] annotations
+ [Variable] dataclasses
+ [Variable] logger
+ [Variable] logging
+ [Variable] time
+
+MODULE: pyrit.executor.attack.multi_turn
+----------------------------------------
+ [Variable] chunked_request
+ [Variable] crescendo
+ [Variable] multi_prompt_sending
+ [Variable] multi_turn_attack_strategy
+ [Variable] red_teaming
+ [Variable] simulated_conversation
+ [Variable] tree_of_attacks
+
+MODULE: pyrit.executor.attack.multi_turn.chunked_request
+--------------------------------------------------------
+ [Class]    ChunkedRequestAttack
+    [Method]   __init__
+    [Method]   _determine_attack_outcome
+    [Method]   _generate_chunk_prompts
+    [Method]   _perform_async
+    [Method]   _score_combined_value_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   get_attack_scoring_config
+    [Attribute] DEFAULT_TEMPLATE
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    ChunkedRequestAttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] executed_turns
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] memory_labels
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] start_time
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] textwrap
+
+MODULE: pyrit.executor.attack.multi_turn.crescendo
+--------------------------------------------------
+ [Class]    CrescendoAttack
+    [Method]   __init__
+    [Method]   _backtrack_memory_async
+    [Method]   _build_adversarial_prompt
+    [Method]   _check_refusal_async
+    [Method]   _generate_next_prompt_async
+    [Method]   _get_attack_prompt_async
+    [Method]   _parse_adversarial_response
+    [Method]   _perform_async
+    [Method]   _perform_backtrack_if_refused_async
+    [Method]   _score_response_async
+    [Method]   _send_prompt_to_adversarial_chat_async
+    [Method]   _send_prompt_to_objective_target_async
+    [Method]   _set_adversarial_chat_system_prompt_template
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   get_attack_scoring_config
+    [Attribute] DEFAULT_ADVERSARIAL_CHAT_SYSTEM_PROMPT_TEMPLATE_PATH
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    CrescendoAttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] backtrack_count
+    [Attribute] executed_turns
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] memory_labels
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] refused_text
+    [Attribute] start_time
+ [Class]    CrescendoAttackResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] backtrack_count
+    [Attribute] executed_turns
+    [Attribute] execution_time_ms
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] outcome
+    [Attribute] outcome_reason
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.attack.multi_turn.multi_prompt_sending
+-------------------------------------------------------------
+ [Class]    MultiPromptSendingAttack
+    [Method]   __init__
+    [Method]   _determine_attack_outcome
+    [Method]   _evaluate_response_async
+    [Method]   _perform_async
+    [Method]   _send_prompt_to_objective_target_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Method]   get_attack_scoring_config
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    MultiPromptSendingAttackParameters
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] next_message
+    [Attribute] prepended_conversation
+    [Attribute] user_messages
+ [Variable] REQUIRED_VALUE
+ [Variable] TYPE_CHECKING
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.attack.multi_turn.multi_turn_attack_strategy
+-------------------------------------------------------------------
+ [Class]    ConversationSession
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Class]    MultiTurnAttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] executed_turns
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] memory_labels
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] start_time
+ [Class]    MultiTurnAttackStrategy
+    [Method]   __init__
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] AttackParamsT
+ [Variable] AttackStrategyResultT
+ [Variable] MultiTurnAttackStrategyContextT
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.multi_turn.red_teaming
+----------------------------------------------------
+ [Class]    RTASystemPromptPaths
+    [Attribute] CRUCIBLE
+    [Attribute] IMAGE_GENERATION
+    [Attribute] NAIVE_CRESCENDO
+    [Attribute] TEXT_GENERATION
+    [Attribute] VIOLENT_DURIAN
+ [Class]    RedTeamingAttack
+    [Method]   __init__
+    [Method]   _build_adversarial_prompt
+    [Method]   _generate_next_prompt_async
+    [Method]   _handle_adversarial_file_response
+    [Method]   _handle_adversarial_text_response
+    [Method]   _perform_async
+    [Method]   _score_response_async
+    [Method]   _send_prompt_to_objective_target_async
+    [Method]   _set_adversarial_chat_seed_prompt
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   get_attack_scoring_config
+    [Attribute] DEFAULT_ADVERSARIAL_PROMPT_IF_OBJECTIVE_TARGET_IS_BLOCKED
+    [Attribute] DEFAULT_ERR_MSG_IF_OBJECTIVE_TARGET_HAS_NON_TEXT_RESPONSE
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] EXECUTOR_RED_TEAM_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] annotations
+ [Variable] enum
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.attack.multi_turn.simulated_conversation
+---------------------------------------------------------------
+ [Function] _generate_next_message_async
+ [Function] generate_simulated_conversation_async
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.attack.multi_turn.tree_of_attacks
+--------------------------------------------------------
+ [Class]    TAPAttack
+    [Method]   __init__
+    [Method]   _all_nodes_pruned
+    [Method]   _branch_existing_nodes
+    [Method]   _calculate_tree_statistics
+    [Method]   _create_attack_node
+    [Method]   _create_attack_result
+    [Method]   _create_failure_result
+    [Method]   _create_on_topic_scorer
+    [Method]   _create_success_result
+    [Method]   _execute_iteration_async
+    [Method]   _format_node_result
+    [Method]   _get_auxiliary_scores_summary
+    [Method]   _get_completed_nodes_sorted_by_score
+    [Method]   _get_last_response_from_conversation
+    [Method]   _initialize_first_level_nodes_async
+    [Method]   _is_objective_achieved
+    [Method]   _load_adversarial_prompts
+    [Method]   _perform_async
+    [Method]   _prepare_nodes_for_iteration_async
+    [Method]   _prune_nodes_to_maintain_width
+    [Method]   _send_prompts_to_all_nodes_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _update_best_performing_node
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Method]   get_attack_scoring_config
+    [Attribute] DEFAULT_ADVERSARIAL_PROMPT_TEMPLATE_PATH
+    [Attribute] DEFAULT_ADVERSARIAL_SEED_PROMPT_PATH
+    [Attribute] DEFAULT_ADVERSARIAL_SYSTEM_PROMPT_PATH
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    TAPAttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] best_adversarial_conversation_id
+    [Attribute] best_conversation_id
+    [Attribute] best_objective_score
+    [Attribute] executed_turns
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] memory_labels
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] start_time
+ [Class]    TAPAttackResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] auxiliary_scores_summary
+    [Attribute] best_adversarial_conversation_id
+    [Attribute] executed_turns
+    [Attribute] execution_time_ms
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] max_depth_reached
+    [Attribute] nodes_explored
+    [Attribute] nodes_pruned
+    [Attribute] outcome
+    [Attribute] outcome_reason
+    [Attribute] tree_visualization
+ [Class]    TAPAttackScoringConfig
+    [Method]   __init__
+    [Attribute] objective_scorer
+    [Attribute] refusal_scorer
+    [Attribute] threshold
+    [Attribute] use_score_as_feedback
+ [Class]    TreeOfAttacksWithPruningAttack
+    [Method]   __init__
+    [Method]   _all_nodes_pruned
+    [Method]   _branch_existing_nodes
+    [Method]   _calculate_tree_statistics
+    [Method]   _create_attack_node
+    [Method]   _create_attack_result
+    [Method]   _create_failure_result
+    [Method]   _create_on_topic_scorer
+    [Method]   _create_success_result
+    [Method]   _execute_iteration_async
+    [Method]   _format_node_result
+    [Method]   _get_auxiliary_scores_summary
+    [Method]   _get_completed_nodes_sorted_by_score
+    [Method]   _get_last_response_from_conversation
+    [Method]   _initialize_first_level_nodes_async
+    [Method]   _is_objective_achieved
+    [Method]   _load_adversarial_prompts
+    [Method]   _perform_async
+    [Method]   _prepare_nodes_for_iteration_async
+    [Method]   _prune_nodes_to_maintain_width
+    [Method]   _send_prompts_to_all_nodes_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _update_best_performing_node
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Method]   get_attack_scoring_config
+    [Attribute] DEFAULT_ADVERSARIAL_PROMPT_TEMPLATE_PATH
+    [Attribute] DEFAULT_ADVERSARIAL_SEED_PROMPT_PATH
+    [Attribute] DEFAULT_ADVERSARIAL_SYSTEM_PROMPT_PATH
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    _TreeOfAttacksNode
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   _generate_adversarial_prompt_async
+    [Method]   _generate_first_turn_prompt_async
+    [Method]   _generate_off_topic_feedback_prompt
+    [Method]   _generate_red_teaming_prompt_async
+    [Method]   _generate_single_red_teaming_prompt_async
+    [Method]   _generate_subsequent_turn_prompt_async
+    [Method]   _get_response_score_async
+    [Method]   _handle_json_error
+    [Method]   _handle_unexpected_error
+    [Method]   _is_first_turn
+    [Method]   _mark_execution_complete
+    [Method]   _parse_red_teaming_response
+    [Method]   _score_response_async
+    [Method]   _send_initial_prompt_to_target_async
+    [Method]   _send_prompt_to_target_async
+    [Method]   _send_to_adversarial_chat_async
+    [Method]   duplicate
+    [Method]   initialize_with_prepended_conversation_async
+    [Method]   send_prompt_async
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] asyncio
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.printer
+-------------------------------------
+ [Variable] attack_result_printer
+ [Variable] console_printer
+ [Variable] markdown_printer
+
+MODULE: pyrit.executor.attack.printer.attack_result_printer
+-----------------------------------------------------------
+ [Class]    AttackResultPrinter
+    [Method]   _format_time
+    [Method]   _get_outcome_icon
+    [Method]   print_conversation_async
+    [Method]   print_result_async
+    [Method]   print_summary_async
+    [Attribute] _abc_impl
+
+MODULE: pyrit.executor.attack.printer.console_printer
+-----------------------------------------------------
+ [Class]    ConsoleAttackResultPrinter
+    [Method]   __init__
+    [Method]   _get_outcome_color
+    [Method]   _print_adversarial_conversation_async
+    [Method]   _print_colored
+    [Method]   _print_footer
+    [Method]   _print_header
+    [Method]   _print_metadata
+    [Method]   _print_pruned_conversations_async
+    [Method]   _print_score
+    [Method]   _print_section_header
+    [Method]   _print_wrapped_text
+    [Method]   print_conversation_async
+    [Method]   print_messages_async
+    [Method]   print_result_async
+    [Method]   print_summary_async
+    [Attribute] _abc_impl
+ [Variable] Back
+ [Variable] Fore
+ [Variable] Style
+ [Variable] textwrap
+
+MODULE: pyrit.executor.attack.printer.markdown_printer
+------------------------------------------------------
+ [Class]    MarkdownAttackResultPrinter
+    [Method]   __init__
+    [Method]   _format_assistant_message_async
+    [Method]   _format_audio_content
+    [Method]   _format_error_content
+    [Method]   _format_image_content
+    [Method]   _format_message_scores
+    [Method]   _format_piece_content_async
+    [Method]   _format_score
+    [Method]   _format_system_message
+    [Method]   _format_text_content
+    [Method]   _format_user_message_async
+    [Method]   _get_adversarial_conversation_markdown_async
+    [Method]   _get_audio_mime_type
+    [Method]   _get_conversation_markdown_async
+    [Method]   _get_pruned_conversations_markdown_async
+    [Method]   _get_summary_markdown_async
+    [Method]   _render_markdown
+    [Method]   print_conversation_async
+    [Method]   print_result_async
+    [Method]   print_summary_async
+    [Attribute] _abc_impl
+ [Variable] os
+
+MODULE: pyrit.executor.attack.single_turn
+-----------------------------------------
+ [Variable] context_compliance
+ [Variable] flip_attack
+ [Variable] many_shot_jailbreak
+ [Variable] prompt_sending
+ [Variable] role_play
+ [Variable] single_turn_attack_strategy
+ [Variable] skeleton_key
+
+MODULE: pyrit.executor.attack.single_turn.context_compliance
+------------------------------------------------------------
+ [Class]    ContextComplianceAttack
+    [Method]   __init__
+    [Method]   _build_benign_context_conversation_async
+    [Method]   _construct_assistant_response
+    [Method]   _get_benign_question_answer_async
+    [Method]   _get_objective_as_benign_question_async
+    [Method]   _get_objective_as_question_async
+    [Method]   _load_context_description_instructions
+    [Method]   _setup_async
+    [Attribute] DEFAULT_AFFIRMATIVE_RESPONSE
+    [Attribute] DEFAULT_CONTEXT_DESCRIPTION_PATH
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.attack.single_turn.flip_attack
+-----------------------------------------------------
+ [Class]    FlipAttack
+    [Method]   __init__
+    [Method]   _perform_async
+    [Method]   _setup_async
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.single_turn.many_shot_jailbreak
+-------------------------------------------------------------
+ [Class]    ManyShotJailbreakAttack
+    [Method]   __init__
+    [Method]   _perform_async
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Function] fetch_many_shot_jailbreaking_dataset
+ [Variable] JAILBREAK_TEMPLATES_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] requests
+
+MODULE: pyrit.executor.attack.single_turn.prompt_sending
+--------------------------------------------------------
+ [Class]    PromptSendingAttack
+    [Method]   __init__
+    [Method]   _determine_attack_outcome
+    [Method]   _evaluate_response_async
+    [Method]   _get_message
+    [Method]   _perform_async
+    [Method]   _send_prompt_to_objective_target_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   get_attack_scoring_config
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] AttackParamsT
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.single_turn.role_play
+---------------------------------------------------
+ [Class]    RolePlayAttack
+    [Method]   __init__
+    [Method]   _get_conversation_start
+    [Method]   _parse_role_play_definition
+    [Method]   _rephrase_objective_async
+    [Method]   _setup_async
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Class]    RolePlayPaths
+    [Attribute] MOVIE_SCRIPT
+    [Attribute] PERSUASION_SCRIPT
+    [Attribute] PERSUASION_SCRIPT_WRITTEN
+    [Attribute] TRIVIA_GAME
+    [Attribute] VIDEO_GAME
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] enum
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.executor.attack.single_turn.single_turn_attack_strategy
+---------------------------------------------------------------------
+ [Class]    SingleTurnAttackContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] _memory_labels_override
+    [Attribute] _next_message_override
+    [Attribute] _prepended_conversation_override
+    [Attribute] memory_labels
+    [Attribute] metadata
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] start_time
+    [Attribute] system_prompt
+ [Class]    SingleTurnAttackStrategy
+    [Method]   __init__
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] AttackParamsT
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.attack.single_turn.skeleton_key
+------------------------------------------------------
+ [Class]    SkeletonKeyAttack
+    [Method]   __init__
+    [Method]   _create_skeleton_key_failure_result
+    [Method]   _load_skeleton_key_prompt
+    [Method]   _perform_async
+    [Method]   _send_skeleton_key_prompt_async
+    [Attribute] DEFAULT_SKELETON_KEY_PROMPT_PATH
+    [Attribute] _abc_impl
+    [Attribute] params_type
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.benchmark
+--------------------------------
+ [Variable] fairness_bias
+ [Variable] question_answering
+
+MODULE: pyrit.executor.benchmark.fairness_bias
+----------------------------------------------
+ [Class]    FairnessBiasBenchmark
+    [Method]   __init__
+    [Method]   _extract_name
+    [Method]   _extract_name_with_regex
+    [Method]   _format_experiment_results
+    [Method]   _format_story_prompt
+    [Method]   _perform_async
+    [Method]   _run_experiment
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Method]   get_experiment_summary
+    [Method]   get_last_context
+    [Attribute] _abc_impl
+ [Class]    FairnessBiasBenchmarkContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] generated_message
+    [Attribute] num_experiments
+    [Attribute] objective
+ [Variable] logger
+ [Variable] logging
+ [Variable] re
+ [Variable] uuid
+
+MODULE: pyrit.executor.benchmark.question_answering
+---------------------------------------------------
+ [Class]    QuestionAnsweringBenchmark
+    [Method]   __init__
+    [Method]   _create_message
+    [Method]   _format_options
+    [Method]   _format_question_prompt
+    [Method]   _perform_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Attribute] _DEFAULT_OBJECTIVE_FORMAT
+    [Attribute] _DEFAULT_OPTIONS_FORMAT
+    [Attribute] _DEFAULT_QUESTION_FORMAT
+    [Attribute] _abc_impl
+ [Class]    QuestionAnsweringBenchmarkContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] generated_message
+ [Variable] logger
+ [Variable] logging
+ [Variable] textwrap
+
+MODULE: pyrit.executor.core
+---------------------------
+ [Variable] config
+ [Variable] strategy
+
+MODULE: pyrit.executor.core.config
+----------------------------------
+ [Class]    StrategyConverterConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+
+MODULE: pyrit.executor.core.strategy
+------------------------------------
+ [Class]    Strategy
+    [Method]   __init__
+    [Method]   _execution_context
+    [Method]   _handle_event
+    [Method]   _perform_async
+    [Method]   _register_event_handler
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Method]   execute_with_context_async
+    [Method]   get_identifier
+    [Attribute] _abc_impl
+ [Class]    StrategyContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   duplicate
+    [Attribute] _abc_impl
+ [Class]    StrategyEvent
+    [Attribute] ON_ERROR
+    [Attribute] ON_POST_EXECUTE
+    [Attribute] ON_POST_SETUP
+    [Attribute] ON_POST_TEARDOWN
+    [Attribute] ON_POST_VALIDATE
+    [Attribute] ON_PRE_EXECUTE
+    [Attribute] ON_PRE_SETUP
+    [Attribute] ON_PRE_TEARDOWN
+    [Attribute] ON_PRE_VALIDATE
+ [Class]    StrategyEventData
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] error
+    [Attribute] result
+ [Class]    StrategyEventHandler
+    [Method]   on_event
+    [Attribute] _abc_impl
+ [Class]    StrategyLogAdapter
+    [Method]   process
+    [Attribute] _STRATEGY_ID_KEY
+    [Attribute] _STRATEGY_NAME_KEY
+    [Attribute] manager
+    [Attribute] name
+ [Variable] StrategyContextT
+ [Variable] StrategyResultT
+ [Variable] annotations
+ [Variable] ast
+ [Variable] asyncio
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.promptgen
+--------------------------------
+ [Variable] anecdoctor
+ [Variable] core
+
+MODULE: pyrit.executor.promptgen.anecdoctor
+-------------------------------------------
+ [Class]    AnecdoctorContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Class]    AnecdoctorGenerator
+    [Method]   __init__
+    [Method]   _extract_knowledge_graph_async
+    [Method]   _format_few_shot_examples
+    [Method]   _load_prompt_from_yaml
+    [Method]   _perform_async
+    [Method]   _prepare_examples_async
+    [Method]   _send_examples_to_target_async
+    [Method]   _setup_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   execute_async
+    [Attribute] _ANECDOCTOR_BUILD_KG_YAML
+    [Attribute] _ANECDOCTOR_PROMPT_PATH
+    [Attribute] _ANECDOCTOR_USE_FEWSHOT_YAML
+    [Attribute] _ANECDOCTOR_USE_KG_YAML
+    [Attribute] _abc_impl
+ [Class]    AnecdoctorResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Variable] EXECUTOR_SEED_PROMPT_PATH
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+ [Variable] yaml
+
+MODULE: pyrit.executor.promptgen.core
+-------------------------------------
+ [Variable] prompt_generator_strategy
+
+MODULE: pyrit.executor.promptgen.core.prompt_generator_strategy
+---------------------------------------------------------------
+ [Class]    PromptGeneratorStrategy
+    [Method]   __init__
+    [Attribute] _abc_impl
+ [Class]    PromptGeneratorStrategyContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Class]    PromptGeneratorStrategyResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Class]    _DefaultPromptGeneratorStrategyEventHandler
+    [Method]   __init__
+    [Method]   on_event
+    [Attribute] _abc_impl
+ [Variable] PromptGeneratorStrategyContextT
+ [Variable] PromptGeneratorStrategyResultT
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.promptgen.fuzzer
+---------------------------------------
+ [Variable] fuzzer
+ [Variable] fuzzer_converter_base
+ [Variable] fuzzer_crossover_converter
+ [Variable] fuzzer_expand_converter
+ [Variable] fuzzer_rephrase_converter
+ [Variable] fuzzer_shorten_converter
+ [Variable] fuzzer_similar_converter
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer
+----------------------------------------------
+ [Class]    FuzzerContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __post_init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] executed_turns
+    [Attribute] last_choice_node
+    [Attribute] max_query_limit
+    [Attribute] total_jailbreak_count
+    [Attribute] total_target_query_count
+ [Class]    FuzzerGenerator
+    [Method]   __init__
+    [Method]   _add_successful_template
+    [Method]   _apply_template_converter_async
+    [Method]   _create_generation_result
+    [Method]   _create_normalizer_requests
+    [Method]   _execute_generation_iteration_async
+    [Method]   _generate_prompts_from_template
+    [Method]   _get_other_templates
+    [Method]   _is_jailbreak
+    [Method]   _normalize_score_to_float
+    [Method]   _perform_async
+    [Method]   _process_scoring_results
+    [Method]   _score_responses_async
+    [Method]   _select_template_with_mcts
+    [Method]   _send_prompts_to_target_async
+    [Method]   _setup_async
+    [Method]   _should_stop_generation
+    [Method]   _teardown_async
+    [Method]   _update_mcts_rewards
+    [Method]   _validate_context
+    [Method]   _validate_inputs
+    [Method]   execute_async
+    [Method]   with_default_scorer
+    [Attribute] _DEFAULT_BATCH_SIZE
+    [Attribute] _DEFAULT_FREQUENCY_WEIGHT
+    [Attribute] _DEFAULT_MINIMUM_REWARD
+    [Attribute] _DEFAULT_NON_LEAF_PROBABILITY
+    [Attribute] _DEFAULT_QUERY_LIMIT_MULTIPLIER
+    [Attribute] _DEFAULT_REWARD_PENALTY
+    [Attribute] _DEFAULT_TARGET_JAILBREAK_COUNT
+    [Attribute] _TEMPLATE_PLACEHOLDER
+    [Attribute] _abc_impl
+ [Class]    FuzzerResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   print_formatted
+    [Method]   print_templates
+    [Attribute] _abc_impl
+    [Attribute] templates_explored
+    [Attribute] total_queries
+ [Class]    FuzzerResultPrinter
+    [Method]   __init__
+    [Method]   _print_colored
+    [Method]   _print_conversations
+    [Method]   _print_footer
+    [Method]   _print_header
+    [Method]   _print_section_header
+    [Method]   _print_summary
+    [Method]   _print_templates
+    [Method]   _print_wrapped_text
+    [Method]   print_result
+    [Method]   print_templates_only
+ [Class]    _MCTSExplorer
+    [Method]   __init__
+    [Method]   _calculate_uct_score
+    [Method]   select_node
+    [Method]   update_rewards
+ [Class]    _PromptNode
+    [Method]   __init__
+    [Method]   add_parent
+ [Variable] Fore
+ [Variable] Style
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] np
+ [Variable] random
+ [Variable] textwrap
+ [Variable] uuid
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_converter_base
+-------------------------------------------------------------
+ [Class]    FuzzerConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   input_supported
+    [Method]   output_supported
+    [Method]   send_prompt_async
+    [Method]   update
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] REQUIRED_VALUE
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_crossover_converter
+------------------------------------------------------------------
+ [Class]    FuzzerCrossOverConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   update
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+ [Variable] random
+ [Variable] uuid
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_expand_converter
+---------------------------------------------------------------
+ [Class]    FuzzerExpandConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+ [Variable] uuid
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_rephrase_converter
+-----------------------------------------------------------------
+ [Class]    FuzzerRephraseConverter
+    [Method]   __init__
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_shorten_converter
+----------------------------------------------------------------
+ [Class]    FuzzerShortenConverter
+    [Method]   __init__
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+
+MODULE: pyrit.executor.promptgen.fuzzer.fuzzer_similar_converter
+----------------------------------------------------------------
+ [Class]    FuzzerSimilarConverter
+    [Method]   __init__
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+
+MODULE: pyrit.executor.workflow
+-------------------------------
+ [Variable] core
+ [Variable] xpia
+
+MODULE: pyrit.executor.workflow.core
+------------------------------------
+ [Variable] workflow_strategy
+
+MODULE: pyrit.executor.workflow.core.workflow_strategy
+------------------------------------------------------
+ [Class]    WorkflowContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Class]    WorkflowResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+ [Class]    WorkflowStrategy
+    [Method]   __init__
+    [Attribute] _abc_impl
+ [Class]    _DefaultWorkflowEventHandler
+    [Method]   __init__
+    [Method]   _on_error
+    [Method]   _on_post_execute
+    [Method]   _on_post_setup
+    [Method]   _on_post_teardown
+    [Method]   _on_post_validate
+    [Method]   _on_pre_execute
+    [Method]   _on_pre_setup
+    [Method]   _on_pre_teardown
+    [Method]   _on_pre_validate
+    [Method]   on_event
+    [Attribute] _abc_impl
+ [Variable] WorkflowContextT
+ [Variable] WorkflowResultT
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.executor.workflow.xpia
+------------------------------------
+ [Class]    XPIAContext
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] processing_callback
+    [Attribute] processing_prompt
+ [Class]    XPIAManualProcessingWorkflow
+    [Method]   __init__
+    [Method]   _execute_processing_async
+    [Method]   _perform_async
+    [Method]   _score_response_async
+    [Method]   _setup_async
+    [Method]   _setup_attack_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   _validate_message
+    [Method]   execute_async
+    [Attribute] _abc_impl
+ [Class]    XPIAProcessingCallback
+    [Method]   __call__
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    XPIAResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] attack_setup_response
+    [Attribute] score
+    [Attribute] status
+    [Attribute] success
+ [Class]    XPIAStatus
+    [Attribute] FAILURE
+    [Attribute] SUCCESS
+    [Attribute] UNKNOWN
+ [Class]    XPIATestWorkflow
+    [Method]   __init__
+    [Method]   _execute_processing_async
+    [Method]   _perform_async
+    [Method]   _score_response_async
+    [Method]   _setup_async
+    [Method]   _setup_attack_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   _validate_message
+    [Method]   execute_async
+    [Attribute] _abc_impl
+ [Class]    XPIAWorkflow
+    [Method]   __init__
+    [Method]   _execute_processing_async
+    [Method]   _perform_async
+    [Method]   _score_response_async
+    [Method]   _setup_async
+    [Method]   _setup_attack_async
+    [Method]   _teardown_async
+    [Method]   _validate_context
+    [Method]   _validate_message
+    [Method]   execute_async
+    [Attribute] _abc_impl
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.identifiers
+-------------------------
+ [Variable] IdentifierT
+ [Variable] class_name_utils
+ [Variable] converter_identifier
+ [Variable] identifiable
+ [Variable] identifier
+ [Variable] scorer_identifier
+ [Variable] target_identifier
+
+MODULE: pyrit.identifiers.class_name_utils
+------------------------------------------
+ [Function] class_name_to_snake_case
+ [Function] snake_case_to_class_name
+ [Variable] re
+
+MODULE: pyrit.identifiers.converter_identifier
+----------------------------------------------
+ [Class]    ConverterIdentifier
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] converter_specific_params
+    [Attribute] hash
+    [Attribute] sub_identifier
+    [Attribute] target_info
+ [Variable] annotations
+
+MODULE: pyrit.identifiers.identifiable
+--------------------------------------
+ [Class]    Identifiable
+    [Method]   _build_identifier
+    [Method]   get_identifier
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Class]    LegacyIdentifiable
+    [Method]   __str__
+    [Method]   get_identifier
+    [Attribute] _abc_impl
+ [Variable] IdentifierT
+ [Variable] annotations
+
+MODULE: pyrit.identifiers.identifier
+------------------------------------
+ [Class]    Identifier
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __post_init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Method]   _compute_hash
+    [Method]   to_dict
+    [Attribute] hash
+ [Class]    _ExcludeFrom
+    [Attribute] HASH
+    [Attribute] STORAGE
+ [Function] _dataclass_encoder
+ [Function] _expand_exclusions
+ [Function] _is_excluded_from_hash
+ [Function] _is_excluded_from_storage
+ [Variable] T
+ [Variable] _EXCLUDE
+ [Variable] _EXPANSION_CATALOG
+ [Variable] _MAX_STORAGE_LENGTH
+ [Variable] annotations
+ [Variable] hashlib
+ [Variable] json
+ [Variable] pyrit
+
+MODULE: pyrit.identifiers.scorer_identifier
+-------------------------------------------
+ [Class]    ScorerIdentifier
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] hash
+    [Attribute] score_aggregator
+    [Attribute] scorer_specific_params
+    [Attribute] scorer_type
+    [Attribute] sub_identifier
+    [Attribute] system_prompt_template
+    [Attribute] target_info
+    [Attribute] user_prompt_template
+ [Variable] _MAX_STORAGE_LENGTH
+ [Variable] annotations
+
+MODULE: pyrit.identifiers.target_identifier
+-------------------------------------------
+ [Class]    TargetIdentifier
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] endpoint
+    [Attribute] hash
+    [Attribute] max_requests_per_minute
+    [Attribute] model_name
+    [Attribute] target_specific_params
+    [Attribute] temperature
+    [Attribute] top_p
+ [Variable] annotations
+
+MODULE: pyrit.memory
+--------------------
+ [Variable] azure_sql_memory
+ [Variable] central_memory
+ [Variable] memory_embedding
+ [Variable] memory_exporter
+ [Variable] memory_interface
+ [Variable] memory_models
+ [Variable] sqlite_memory
+
+MODULE: pyrit.memory.azure_sql_memory
+-------------------------------------
+ [Class]    AzureSQLMemory
+    [Method]   __init__
+    [Method]   _add_embeddings_to_memory
+    [Method]   _create_auth_token
+    [Method]   _create_engine
+    [Method]   _create_tables_if_not_exist
+    [Method]   _enable_azure_authorization
+    [Method]   _get_attack_result_harm_category_condition
+    [Method]   _get_attack_result_label_condition
+    [Method]   _get_message_pieces_attack_conditions
+    [Method]   _get_message_pieces_memory_label_conditions
+    [Method]   _get_message_pieces_prompt_metadata_conditions
+    [Method]   _get_metadata_conditions
+    [Method]   _get_scenario_result_label_condition
+    [Method]   _get_scenario_result_target_endpoint_condition
+    [Method]   _get_scenario_result_target_model_condition
+    [Method]   _get_seed_metadata_conditions
+    [Method]   _init_storage_io
+    [Method]   _insert_entries
+    [Method]   _insert_entry
+    [Method]   _query_entries
+    [Method]   _refresh_token_if_needed
+    [Method]   _resolve_sas_token
+    [Method]   _update_entries
+    [Method]   add_message_pieces_to_memory
+    [Method]   dispose_engine
+    [Method]   get_all_embeddings
+    [Method]   get_session
+    [Method]   reset_database
+    [Attribute] AZURE_SQL_DB_CONNECTION_STRING
+    [Attribute] AZURE_STORAGE_ACCOUNT_DB_DATA_CONTAINER_URL
+    [Attribute] AZURE_STORAGE_ACCOUNT_DB_DATA_SAS_TOKEN
+    [Attribute] SQL_COPT_SS_ACCESS_TOKEN
+    [Attribute] TOKEN_URL
+    [Attribute] _abc_impl
+    [Attribute] engine
+    [Attribute] memory_embedding
+    [Attribute] results_path
+    [Attribute] results_storage_io
+ [Variable] Model
+ [Variable] default_values
+ [Variable] event
+ [Variable] logger
+ [Variable] logging
+ [Variable] struct
+
+MODULE: pyrit.memory.central_memory
+-----------------------------------
+ [Class]    CentralMemory
+    [Attribute] _memory_instance
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.memory.memory_embedding
+-------------------------------------
+ [Class]    MemoryEmbedding
+    [Method]   __init__
+    [Method]   generate_embedding_memory_data
+ [Function] default_memory_embedding_factory
+
+MODULE: pyrit.memory.memory_exporter
+------------------------------------
+ [Class]    MemoryExporter
+    [Method]   __init__
+    [Method]   export_data
+    [Method]   export_to_csv
+    [Method]   export_to_json
+    [Method]   export_to_markdown
+ [Variable] csv
+ [Variable] json
+
+MODULE: pyrit.memory.memory_interface
+-------------------------------------
+ [Class]    MemoryInterface
+    [Method]   __init__
+    [Method]   _add_embeddings_to_memory
+    [Method]   _add_list_conditions
+    [Method]   _duplicate_conversation
+    [Method]   _get_attack_result_harm_category_condition
+    [Method]   _get_attack_result_label_condition
+    [Method]   _get_message_pieces_attack_conditions
+    [Method]   _get_message_pieces_memory_label_conditions
+    [Method]   _get_message_pieces_prompt_metadata_conditions
+    [Method]   _get_scenario_result_label_condition
+    [Method]   _get_scenario_result_target_endpoint_condition
+    [Method]   _get_scenario_result_target_model_condition
+    [Method]   _get_seed_metadata_conditions
+    [Method]   _init_storage_io
+    [Method]   _insert_entries
+    [Method]   _insert_entry
+    [Method]   _query_entries
+    [Method]   _serialize_seed_value
+    [Method]   _update_entries
+    [Method]   _update_entry
+    [Method]   _update_sequence
+    [Method]   add_attack_results_to_memory
+    [Method]   add_attack_results_to_scenario
+    [Method]   add_message_pieces_to_memory
+    [Method]   add_message_to_memory
+    [Method]   add_scenario_results_to_memory
+    [Method]   add_scores_to_memory
+    [Method]   add_seed_datasets_to_memory_async
+    [Method]   add_seed_groups_to_memory_async
+    [Method]   add_seeds_to_memory_async
+    [Method]   cleanup
+    [Method]   disable_embedding
+    [Method]   dispose_engine
+    [Method]   duplicate_conversation
+    [Method]   duplicate_conversation_excluding_last_turn
+    [Method]   enable_embedding
+    [Method]   export_conversations
+    [Method]   get_all_embeddings
+    [Method]   get_attack_results
+    [Method]   get_conversation
+    [Method]   get_message_pieces
+    [Method]   get_prompt_scores
+    [Method]   get_request_from_response
+    [Method]   get_scenario_results
+    [Method]   get_scores
+    [Method]   get_seed_dataset_names
+    [Method]   get_seed_groups
+    [Method]   get_seeds
+    [Method]   get_session
+    [Method]   print_schema
+    [Method]   update_labels_by_conversation_id
+    [Method]   update_prompt_entries_by_conversation_id
+    [Method]   update_prompt_metadata_by_conversation_id
+    [Method]   update_scenario_run_state
+    [Attribute] _abc_impl
+    [Attribute] engine
+    [Attribute] memory_embedding
+    [Attribute] results_path
+    [Attribute] results_storage_io
+ [Variable] DB_DATA_PATH
+ [Variable] Model
+ [Variable] abc
+ [Variable] atexit
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+ [Variable] warnings
+ [Variable] weakref
+
+MODULE: pyrit.memory.memory_models
+----------------------------------
+ [Class]    AttackResultEntry
+    [Method]   _get_id_as_uuid
+    [Method]   filter_json_serializable_metadata
+    [Method]   get_attack_result
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] adversarial_chat_conversation_ids
+    [Attribute] attack_identifier
+    [Attribute] attack_metadata
+    [Attribute] conversation_id
+    [Attribute] executed_turns
+    [Attribute] execution_time_ms
+    [Attribute] id
+    [Attribute] last_response
+    [Attribute] last_response_id
+    [Attribute] last_score
+    [Attribute] last_score_id
+    [Attribute] metadata
+    [Attribute] objective
+    [Attribute] objective_sha256
+    [Attribute] outcome
+    [Attribute] outcome_reason
+    [Attribute] pruned_conversation_ids
+    [Attribute] pyrit_version
+    [Attribute] registry
+    [Attribute] timestamp
+ [Class]    Base
+    [Attribute] _sa_registry
+    [Attribute] metadata
+    [Attribute] registry
+ [Class]    ConversationMessageWithSimilarity
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    CustomUUID
+    [Method]   load_dialect_impl
+    [Method]   process_bind_param
+    [Method]   process_result_value
+    [Attribute] _generic_type_affinity
+    [Attribute] _has_bind_expression
+    [Attribute] _has_bind_processor
+    [Attribute] _has_column_expression
+    [Attribute] _has_literal_processor
+    [Attribute] _has_result_processor
+    [Attribute] _is_array
+    [Attribute] _is_table_value
+    [Attribute] _is_tuple_type
+    [Attribute] _is_type_decorator
+    [Attribute] _isnull
+    [Attribute] _sqla_type
+    [Attribute] _static_cache_key
+    [Attribute] _type_affinity
+    [Attribute] _variant_mapping
+    [Attribute] cache_ok
+    [Attribute] coerce_to_is_types
+    [Attribute] comparator_factory
+    [Attribute] dispatch
+    [Attribute] hashable
+    [Attribute] impl_instance
+    [Attribute] python_type
+    [Attribute] render_bind_cast
+    [Attribute] render_literal_cast
+    [Attribute] should_evaluate_none
+    [Attribute] sort_key_function
+ [Class]    EmbeddingDataEntry
+    [Method]   __str__
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] embedding
+    [Attribute] embedding_type_name
+    [Attribute] id
+    [Attribute] metadata
+    [Attribute] registry
+ [Class]    EmbeddingMessageWithSimilarity
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    PromptMemoryEntry
+    [Method]   __str__
+    [Method]   get_message_piece
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] attack_identifier
+    [Attribute] conversation_id
+    [Attribute] converted_value
+    [Attribute] converted_value_data_type
+    [Attribute] converted_value_sha256
+    [Attribute] converter_identifiers
+    [Attribute] id
+    [Attribute] idx_conversation_id
+    [Attribute] labels
+    [Attribute] metadata
+    [Attribute] original_prompt_id
+    [Attribute] original_value
+    [Attribute] original_value_data_type
+    [Attribute] original_value_sha256
+    [Attribute] prompt_metadata
+    [Attribute] prompt_target_identifier
+    [Attribute] pyrit_version
+    [Attribute] registry
+    [Attribute] response_error
+    [Attribute] role
+    [Attribute] scores
+    [Attribute] sequence
+    [Attribute] targeted_harm_categories
+    [Attribute] timestamp
+ [Class]    ScenarioResultEntry
+    [Method]   __str__
+    [Method]   get_conversation_ids_by_attack_name
+    [Method]   get_scenario_result
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] attack_results_json
+    [Attribute] completion_time
+    [Attribute] id
+    [Attribute] labels
+    [Attribute] metadata
+    [Attribute] number_tries
+    [Attribute] objective_scorer_identifier
+    [Attribute] objective_target_identifier
+    [Attribute] pyrit_version
+    [Attribute] registry
+    [Attribute] scenario_description
+    [Attribute] scenario_init_data
+    [Attribute] scenario_name
+    [Attribute] scenario_run_state
+    [Attribute] scenario_version
+    [Attribute] timestamp
+ [Class]    ScoreEntry
+    [Method]   get_score
+    [Method]   to_dict
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] id
+    [Attribute] metadata
+    [Attribute] objective
+    [Attribute] prompt_request_piece
+    [Attribute] prompt_request_response_id
+    [Attribute] pyrit_version
+    [Attribute] registry
+    [Attribute] score_category
+    [Attribute] score_metadata
+    [Attribute] score_rationale
+    [Attribute] score_type
+    [Attribute] score_value
+    [Attribute] score_value_description
+    [Attribute] scorer_class_identifier
+    [Attribute] task
+    [Attribute] timestamp
+ [Class]    SeedEntry
+    [Method]   get_seed
+    [Attribute] _sa_class_manager
+    [Attribute] _sa_registry
+    [Attribute] added_by
+    [Attribute] authors
+    [Attribute] data_type
+    [Attribute] dataset_name
+    [Attribute] date_added
+    [Attribute] description
+    [Attribute] groups
+    [Attribute] harm_categories
+    [Attribute] id
+    [Attribute] is_objective
+    [Attribute] metadata
+    [Attribute] name
+    [Attribute] parameters
+    [Attribute] prompt_group_id
+    [Attribute] prompt_metadata
+    [Attribute] registry
+    [Attribute] role
+    [Attribute] seed_type
+    [Attribute] sequence
+    [Attribute] source
+    [Attribute] value
+    [Attribute] value_sha256
+ [Variable] LEGACY_PYRIT_VERSION
+ [Variable] json
+ [Variable] logging
+ [Variable] pyrit
+ [Variable] uuid
+
+MODULE: pyrit.memory.sqlite_memory
+----------------------------------
+ [Class]    SQLiteMemory
+    [Method]   __init__
+    [Method]   _add_embeddings_to_memory
+    [Method]   _create_engine
+    [Method]   _create_tables_if_not_exist
+    [Method]   _get_attack_result_harm_category_condition
+    [Method]   _get_attack_result_label_condition
+    [Method]   _get_message_pieces_attack_conditions
+    [Method]   _get_message_pieces_memory_label_conditions
+    [Method]   _get_message_pieces_prompt_metadata_conditions
+    [Method]   _get_scenario_result_label_condition
+    [Method]   _get_scenario_result_target_endpoint_condition
+    [Method]   _get_scenario_result_target_model_condition
+    [Method]   _get_seed_metadata_conditions
+    [Method]   _init_storage_io
+    [Method]   _insert_entries
+    [Method]   _insert_entry
+    [Method]   _query_entries
+    [Method]   _update_entries
+    [Method]   add_message_pieces_to_memory
+    [Method]   dispose_engine
+    [Method]   export_all_tables
+    [Method]   export_conversations
+    [Method]   get_all_embeddings
+    [Method]   get_all_table_models
+    [Method]   get_session
+    [Method]   print_schema
+    [Method]   reset_database
+    [Attribute] DEFAULT_DB_FILE_NAME
+    [Attribute] _abc_impl
+    [Attribute] engine
+    [Attribute] memory_embedding
+    [Attribute] results_path
+    [Attribute] results_storage_io
+ [Variable] DB_DATA_PATH
+ [Variable] Model
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.message_normalizer
+--------------------------------
+ [Variable] chat_message_normalizer
+ [Variable] conversation_context_normalizer
+ [Variable] generic_system_squash
+ [Variable] message_normalizer
+ [Variable] tokenizer_template_normalizer
+
+MODULE: pyrit.message_normalizer.chat_message_normalizer
+--------------------------------------------------------
+ [Class]    ChatMessageNormalizer
+    [Method]   __init__
+    [Method]   _convert_audio_to_input_audio
+    [Method]   _piece_to_content_dict_async
+    [Method]   normalize_async
+    [Method]   normalize_string_async
+    [Attribute] _abc_impl
+ [Variable] SUPPORTED_AUDIO_FORMATS
+ [Variable] base64
+ [Variable] json
+ [Variable] os
+
+MODULE: pyrit.message_normalizer.conversation_context_normalizer
+----------------------------------------------------------------
+ [Class]    ConversationContextNormalizer
+    [Method]   _format_piece_content
+    [Method]   normalize_string_async
+    [Attribute] _abc_impl
+
+MODULE: pyrit.message_normalizer.generic_system_squash
+------------------------------------------------------
+ [Class]    GenericSystemSquashNormalizer
+    [Method]   normalize_async
+    [Attribute] _abc_impl
+
+MODULE: pyrit.message_normalizer.message_normalizer
+---------------------------------------------------
+ [Class]    DictConvertible
+    [Method]   to_dict
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    MessageListNormalizer
+    [Method]   normalize_async
+    [Method]   normalize_to_dicts_async
+    [Attribute] _abc_impl
+ [Class]    MessageStringNormalizer
+    [Method]   normalize_string_async
+    [Attribute] _abc_impl
+ [Function] apply_system_message_behavior
+ [Variable] T
+ [Variable] abc
+
+MODULE: pyrit.message_normalizer.tokenizer_template_normalizer
+--------------------------------------------------------------
+ [Class]    TokenizerModelConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] system_message_behavior
+ [Class]    TokenizerTemplateNormalizer
+    [Method]   __init__
+    [Method]   _load_tokenizer
+    [Method]   normalize_string_async
+    [Attribute] MODEL_ALIASES
+    [Attribute] _abc_impl
+ [Variable] TYPE_CHECKING
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.models
+--------------------
+ [Variable] ALLOWED_CHAT_MESSAGE_ROLES
+ [Variable] AttackResultT
+ [Variable] StrategyResultT
+ [Variable] attack_result
+ [Variable] chat_message
+ [Variable] conversation_reference
+ [Variable] data_type_serializer
+ [Variable] embeddings
+ [Variable] harm_definition
+ [Variable] json_response_config
+ [Variable] literals
+ [Variable] message
+ [Variable] message_piece
+ [Variable] question_answering
+ [Variable] scenario_result
+ [Variable] score
+ [Variable] seeds
+ [Variable] storage_io
+ [Variable] strategy_result
+
+MODULE: pyrit.models.attack_result
+----------------------------------
+ [Class]    AttackOutcome
+    [Attribute] FAILURE
+    [Attribute] SUCCESS
+    [Attribute] UNDETERMINED
+ [Class]    AttackResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   get_conversations_by_type
+    [Attribute] _abc_impl
+    [Attribute] executed_turns
+    [Attribute] execution_time_ms
+    [Attribute] last_response
+    [Attribute] last_score
+    [Attribute] outcome
+    [Attribute] outcome_reason
+ [Variable] AttackResultT
+ [Variable] annotations
+
+MODULE: pyrit.models.chat_message
+---------------------------------
+ [Class]    ChatMessage
+    [Method]   to_dict
+    [Method]   to_json
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    ChatMessageListDictContent
+    [Method]   __init__
+    [Method]   to_dict
+    [Method]   to_json
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    ChatMessagesDataset
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    ToolCall
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Variable] ALLOWED_CHAT_MESSAGE_ROLES
+
+MODULE: pyrit.models.conversation_reference
+-------------------------------------------
+ [Class]    ConversationReference
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] description
+ [Class]    ConversationType
+    [Attribute] ADVERSARIAL
+    [Attribute] CONVERTER
+    [Attribute] PRUNED
+    [Attribute] SCORE
+ [Variable] annotations
+
+MODULE: pyrit.models.data_type_serializer
+-----------------------------------------
+ [Class]    AudioPathDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    BinaryPathDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    DataTypeSerializer
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    ErrorDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    ImagePathDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    TextDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    URLDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Class]    VideoPathDataTypeSerializer
+    [Method]   __init__
+    [Method]   _get_storage_io
+    [Method]   _is_azure_storage_url
+    [Method]   data_on_disk
+    [Method]   get_data_filename
+    [Method]   get_extension
+    [Method]   get_mime_type
+    [Method]   get_sha256
+    [Method]   read_data
+    [Method]   read_data_base64
+    [Method]   save_b64_image
+    [Method]   save_data
+    [Method]   save_formatted_audio
+    [Attribute] _abc_impl
+    [Attribute] _file_path
+    [Attribute] _memory
+ [Function] data_serializer_factory
+ [Variable] DB_DATA_PATH
+ [Variable] TYPE_CHECKING
+ [Variable] abc
+ [Variable] aiofiles
+ [Variable] annotations
+ [Variable] base64
+ [Variable] hashlib
+ [Variable] os
+ [Variable] time
+ [Variable] wave
+
+MODULE: pyrit.models.embeddings
+-------------------------------
+ [Class]    EmbeddingData
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    EmbeddingResponse
+    [Method]   load_from_file
+    [Method]   save_to_file
+    [Method]   to_json
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    EmbeddingSupport
+    [Method]   generate_text_embedding
+    [Method]   generate_text_embedding_async
+    [Attribute] _abc_impl
+ [Class]    EmbeddingUsageInformation
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Variable] annotations
+
+MODULE: pyrit.models.harm_definition
+------------------------------------
+ [Class]    HarmDefinition
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   get_scale_description
+    [Method]   validate_category
+    [Attribute] source_path
+ [Class]    ScaleDescription
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Function] get_all_harm_definitions
+ [Variable] HARM_DEFINITION_PATH
+ [Variable] logger
+ [Variable] logging
+ [Variable] re
+ [Variable] yaml
+
+MODULE: pyrit.models.json_response_config
+-----------------------------------------
+ [Class]    _JsonResponseConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] enabled
+    [Attribute] schema
+    [Attribute] schema_name
+    [Attribute] strict
+ [Variable] _METADATAKEYS
+ [Variable] annotations
+ [Variable] json
+
+MODULE: pyrit.models.literals
+-----------------------------
+
+MODULE: pyrit.models.message
+----------------------------
+ [Class]    Message
+    [Method]   __init__
+    [Method]   __str__
+    [Method]   duplicate_message
+    [Method]   flatten_to_message_pieces
+    [Method]   get_all_values
+    [Method]   get_piece
+    [Method]   get_value
+    [Method]   get_values
+    [Method]   is_error
+    [Method]   set_response_not_in_database
+    [Method]   set_simulated_role
+    [Method]   to_dict
+    [Method]   validate
+    [Attribute] api_role
+    [Attribute] conversation_id
+    [Attribute] is_simulated
+    [Attribute] role
+    [Attribute] sequence
+ [Function] construct_response_from_request
+ [Function] group_conversation_message_pieces_by_sequence
+ [Function] group_message_pieces_into_conversations
+ [Variable] annotations
+ [Variable] copy
+ [Variable] uuid
+ [Variable] warnings
+
+MODULE: pyrit.models.message_piece
+----------------------------------
+ [Class]    MessagePiece
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   get_role_for_storage
+    [Method]   has_error
+    [Method]   is_blocked
+    [Method]   set_piece_not_in_database
+    [Method]   set_sha256_values_async
+    [Method]   to_dict
+    [Method]   to_message
+    [Attribute] api_role
+    [Attribute] is_simulated
+    [Attribute] role
+ [Function] sort_message_pieces
+ [Variable] annotations
+ [Variable] uuid
+
+MODULE: pyrit.models.question_answering
+---------------------------------------
+ [Class]    QuestionAnsweringDataset
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    QuestionAnsweringEntry
+    [Method]   __hash__
+    [Method]   get_correct_answer_text
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Class]    QuestionChoice
+    [Attribute] _abc_impl
+    [Attribute] model_computed_fields
+    [Attribute] model_config
+    [Attribute] model_extra
+    [Attribute] model_fields
+    [Attribute] model_fields_set
+ [Variable] annotations
+
+MODULE: pyrit.models.scenario_result
+------------------------------------
+ [Class]    ScenarioIdentifier
+    [Method]   __init__
+ [Class]    ScenarioResult
+    [Method]   __init__
+    [Method]   get_objectives
+    [Method]   get_scorer_evaluation_metrics
+    [Method]   get_strategies_used
+    [Method]   normalize_scenario_name
+    [Method]   objective_achieved_rate
+ [Variable] TYPE_CHECKING
+ [Variable] logger
+ [Variable] logging
+ [Variable] pyrit
+ [Variable] uuid
+
+MODULE: pyrit.models.score
+--------------------------
+ [Class]    Score
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   get_value
+    [Method]   to_dict
+    [Method]   validate
+ [Class]    UnvalidatedScore
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   to_score
+    [Attribute] id
+    [Attribute] timestamp
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] uuid
+
+MODULE: pyrit.models.seeds
+--------------------------
+ [Variable] seed
+ [Variable] seed_attack_group
+ [Variable] seed_dataset
+ [Variable] seed_group
+ [Variable] seed_objective
+ [Variable] seed_prompt
+ [Variable] seed_simulated_conversation
+
+MODULE: pyrit.models.seeds.seed
+-------------------------------
+ [Class]    PartialUndefined
+    [Method]   __bool__
+    [Method]   __iter__
+    [Method]   __repr__
+    [Method]   __str__
+    [Attribute] _undefined_exception
+    [Attribute] _undefined_hint
+    [Attribute] _undefined_message
+    [Attribute] _undefined_name
+    [Attribute] _undefined_obj
+ [Class]    Seed
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   render_template_value
+    [Method]   render_template_value_silent
+    [Method]   set_sha256_value_async
+    [Attribute] _abc_impl
+    [Attribute] added_by
+    [Attribute] data_type
+    [Attribute] dataset_name
+    [Attribute] description
+    [Attribute] name
+    [Attribute] prompt_group_alias
+    [Attribute] prompt_group_id
+    [Attribute] source
+    [Attribute] value_sha256
+ [Variable] T
+ [Variable] abc
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] re
+ [Variable] uuid
+
+MODULE: pyrit.models.seeds.seed_attack_group
+--------------------------------------------
+ [Class]    SeedAttackGroup
+    [Method]   __init__
+    [Method]   _enforce_exactly_one_objective
+    [Method]   validate
+    [Attribute] _abc_impl
+    [Attribute] harm_categories
+    [Attribute] has_simulated_conversation
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] prompts
+    [Attribute] simulated_conversation_config
+    [Attribute] user_messages
+ [Variable] annotations
+
+MODULE: pyrit.models.seeds.seed_dataset
+---------------------------------------
+ [Class]    SeedDataset
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   _set_seed_group_id_by_alias
+    [Method]   get_random_values
+    [Method]   get_values
+    [Method]   group_seed_prompts_by_prompt_group_id
+    [Method]   render_template_value
+    [Attribute] _abc_impl
+    [Attribute] objectives
+    [Attribute] prompts
+    [Attribute] seed_groups
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+ [Variable] utils
+ [Variable] uuid
+ [Variable] warnings
+
+MODULE: pyrit.models.seeds.seed_group
+-------------------------------------
+ [Class]    SeedGroup
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   _enforce_consistent_group_id
+    [Method]   _enforce_consistent_role
+    [Method]   _enforce_max_one_objective
+    [Method]   _enforce_max_one_simulated_conversation
+    [Method]   _enforce_no_sequence_overlap_with_simulated
+    [Method]   _get_last_sequence_role
+    [Method]   _get_objective
+    [Method]   _get_simulated_conversation
+    [Method]   _prompts_to_messages
+    [Method]   is_single_part_single_text_request
+    [Method]   is_single_request
+    [Method]   is_single_turn
+    [Method]   render_template_value
+    [Method]   validate
+    [Attribute] _abc_impl
+    [Attribute] harm_categories
+    [Attribute] has_simulated_conversation
+    [Attribute] next_message
+    [Attribute] objective
+    [Attribute] prepended_conversation
+    [Attribute] prompts
+    [Attribute] simulated_conversation_config
+    [Attribute] user_messages
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+ [Variable] warnings
+
+MODULE: pyrit.models.seeds.seed_objective
+-----------------------------------------
+ [Class]    SeedObjective
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __post_init__
+    [Method]   __repr__
+    [Attribute] _abc_impl
+    [Attribute] added_by
+    [Attribute] data_type
+    [Attribute] dataset_name
+    [Attribute] description
+    [Attribute] name
+    [Attribute] prompt_group_alias
+    [Attribute] prompt_group_id
+    [Attribute] source
+    [Attribute] value_sha256
+ [Variable] PATHS_DICT
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.models.seeds.seed_prompt
+--------------------------------------
+ [Class]    SeedPrompt
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __post_init__
+    [Method]   __repr__
+    [Method]   from_messages
+    [Method]   set_encoding_metadata
+    [Attribute] _abc_impl
+    [Attribute] added_by
+    [Attribute] data_type
+    [Attribute] dataset_name
+    [Attribute] description
+    [Attribute] name
+    [Attribute] prompt_group_alias
+    [Attribute] prompt_group_id
+    [Attribute] role
+    [Attribute] sequence
+    [Attribute] source
+    [Attribute] value_sha256
+ [Variable] PATHS_DICT
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+ [Variable] uuid
+
+MODULE: pyrit.models.seeds.seed_simulated_conversation
+------------------------------------------------------
+ [Class]    NextMessageSystemPromptPaths
+    [Attribute] DIRECT
+ [Class]    SeedSimulatedConversation
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   _compute_value
+    [Method]   compute_hash
+    [Method]   get_identifier
+    [Method]   load_simulated_target_system_prompt
+    [Attribute] _abc_impl
+    [Attribute] added_by
+    [Attribute] data_type
+    [Attribute] dataset_name
+    [Attribute] description
+    [Attribute] name
+    [Attribute] prompt_group_alias
+    [Attribute] prompt_group_id
+    [Attribute] sequence_range
+    [Attribute] source
+    [Attribute] value_sha256
+ [Class]    SimulatedTargetSystemPromptPaths
+    [Attribute] COMPLIANT
+ [Variable] EXECUTOR_SIMULATED_TARGET_PATH
+ [Variable] annotations
+ [Variable] enum
+ [Variable] hashlib
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] pyrit
+
+MODULE: pyrit.models.storage_io
+-------------------------------
+ [Class]    AzureBlobStorageIO
+    [Method]   __init__
+    [Method]   _create_container_client_async
+    [Method]   _upload_blob_async
+    [Method]   create_directory_if_not_exists
+    [Method]   is_file
+    [Method]   parse_blob_url
+    [Method]   path_exists
+    [Method]   read_file
+    [Method]   write_file
+    [Attribute] _abc_impl
+ [Class]    DiskStorageIO
+    [Method]   _convert_to_path
+    [Method]   create_directory_if_not_exists
+    [Method]   is_file
+    [Method]   path_exists
+    [Method]   read_file
+    [Method]   write_file
+    [Attribute] _abc_impl
+ [Class]    StorageIO
+    [Method]   create_directory_if_not_exists
+    [Method]   is_file
+    [Method]   path_exists
+    [Method]   read_file
+    [Method]   write_file
+    [Attribute] _abc_impl
+ [Class]    SupportedContentType
+    [Attribute] PLAIN_TEXT
+ [Variable] aiofiles
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.models.strategy_result
+------------------------------------
+ [Class]    StrategyResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   duplicate
+    [Attribute] _abc_impl
+ [Variable] StrategyResultT
+ [Variable] annotations
+
+MODULE: pyrit.prompt_converter
+------------------------------
+ [Variable] add_image_text_converter
+ [Variable] add_image_to_video_converter
+ [Variable] add_text_image_converter
+ [Variable] ansi_escape
+ [Variable] ascii_art_converter
+ [Variable] ask_to_decode_converter
+ [Variable] atbash_converter
+ [Variable] audio_frequency_converter
+ [Variable] azure_speech_audio_to_text_converter
+ [Variable] azure_speech_text_to_audio_converter
+ [Variable] base2048_converter
+ [Variable] base64_converter
+ [Variable] bin_ascii_converter
+ [Variable] binary_converter
+ [Variable] braille_converter
+ [Variable] caesar_converter
+ [Variable] character_space_converter
+ [Variable] charswap_attack_converter
+ [Variable] codechameleon_converter
+ [Variable] colloquial_wordswap_converter
+ [Variable] denylist_converter
+ [Variable] diacritic_converter
+ [Variable] ecoji_converter
+ [Variable] emoji_converter
+ [Variable] first_letter_converter
+ [Variable] flip_converter
+ [Variable] human_in_the_loop_converter
+ [Variable] image_compression_converter
+ [Variable] insert_punctuation_converter
+ [Variable] leetspeak_converter
+ [Variable] llm_generic_text_converter
+ [Variable] malicious_question_generator_converter
+ [Variable] math_obfuscation_converter
+ [Variable] math_prompt_converter
+ [Variable] morse_converter
+ [Variable] nato_converter
+ [Variable] negation_trap_converter
+ [Variable] noise_converter
+ [Variable] pdf_converter
+ [Variable] persuasion_converter
+ [Variable] prompt_converter
+ [Variable] qr_code_converter
+ [Variable] random_capital_letters_converter
+ [Variable] random_translation_converter
+ [Variable] repeat_token_converter
+ [Variable] rot13_converter
+ [Variable] search_replace_converter
+ [Variable] selective_text_converter
+ [Variable] string_join_converter
+ [Variable] suffix_append_converter
+ [Variable] superscript_converter
+ [Variable] template_segment_converter
+ [Variable] tense_converter
+ [Variable] text_jailbreak_converter
+ [Variable] text_selection_strategy
+ [Variable] token_smuggling
+ [Variable] tone_converter
+ [Variable] toxic_sentence_generator_converter
+ [Variable] translation_converter
+ [Variable] transparency_attack_converter
+ [Variable] unicode_confusable_converter
+ [Variable] unicode_replacement_converter
+ [Variable] unicode_sub_converter
+ [Variable] url_converter
+ [Variable] variation_converter
+ [Variable] word_level_converter
+ [Variable] zalgo_converter
+ [Variable] zero_width_converter
+
+MODULE: pyrit.prompt_converter.add_image_text_converter
+-------------------------------------------------------
+ [Class]    AddImageTextConverter
+    [Method]   __init__
+    [Method]   _add_text_to_image
+    [Method]   _build_identifier
+    [Method]   _load_font
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] Image
+ [Variable] ImageDraw
+ [Variable] ImageFont
+ [Variable] base64
+ [Variable] logger
+ [Variable] logging
+ [Variable] string
+ [Variable] textwrap
+
+MODULE: pyrit.prompt_converter.add_image_to_video_converter
+-----------------------------------------------------------
+ [Class]    AddImageVideoConverter
+    [Method]   __init__
+    [Method]   _add_image_to_video
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] DB_DATA_PATH
+ [Variable] logger
+ [Variable] logging
+ [Variable] np
+ [Variable] os
+ [Variable] video_encoding_map
+
+MODULE: pyrit.prompt_converter.add_text_image_converter
+-------------------------------------------------------
+ [Class]    AddTextImageConverter
+    [Method]   __init__
+    [Method]   _add_text_to_image
+    [Method]   _build_identifier
+    [Method]   _load_font
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] Image
+ [Variable] ImageDraw
+ [Variable] ImageFont
+ [Variable] base64
+ [Variable] hashlib
+ [Variable] logger
+ [Variable] logging
+ [Variable] string
+ [Variable] textwrap
+
+MODULE: pyrit.prompt_converter.ascii_art_converter
+--------------------------------------------------
+ [Class]    AsciiArtConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.ask_to_decode_converter
+------------------------------------------------------
+ [Class]    AskToDecodeConverter
+    [Method]   __init__
+    [Method]   _encode_with_random_template
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] all_templates
+    [Attribute] extra_templates
+    [Attribute] garak_templates
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.atbash_converter
+-----------------------------------------------
+ [Class]    AtbashConverter
+    [Method]   __init__
+    [Method]   _atbash
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+ [Variable] string
+
+MODULE: pyrit.prompt_converter.audio_frequency_converter
+--------------------------------------------------------
+ [Class]    AudioFrequencyConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] io
+ [Variable] logger
+ [Variable] logging
+ [Variable] np
+ [Variable] wavfile
+
+MODULE: pyrit.prompt_converter.azure_speech_audio_to_text_converter
+-------------------------------------------------------------------
+ [Class]    AzureSpeechAudioToTextConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   recognize_audio
+    [Method]   stop_cb
+    [Method]   transcript_cb
+    [Attribute] AZURE_SPEECH_KEY_ENVIRONMENT_VARIABLE
+    [Attribute] AZURE_SPEECH_REGION_ENVIRONMENT_VARIABLE
+    [Attribute] AZURE_SPEECH_RESOURCE_ID_ENVIRONMENT_VARIABLE
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] TYPE_CHECKING
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+ [Variable] time
+
+MODULE: pyrit.prompt_converter.azure_speech_text_to_audio_converter
+-------------------------------------------------------------------
+ [Class]    AzureSpeechTextToAudioConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] AZURE_SPEECH_KEY_ENVIRONMENT_VARIABLE
+    [Attribute] AZURE_SPEECH_REGION_ENVIRONMENT_VARIABLE
+    [Attribute] AZURE_SPEECH_RESOURCE_ID_ENVIRONMENT_VARIABLE
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] TYPE_CHECKING
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.base2048_converter
+-------------------------------------------------
+ [Class]    Base2048Converter
+    [Method]   __init__
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] base2048
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.base64_converter
+-----------------------------------------------
+ [Class]    Base64Converter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] base64
+ [Variable] binascii
+
+MODULE: pyrit.prompt_converter.bin_ascii_converter
+--------------------------------------------------
+ [Class]    BinAsciiConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _uuencode_chunk
+    [Method]   convert_word_async
+    [Method]   join_words
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] binascii
+
+MODULE: pyrit.prompt_converter.binary_converter
+-----------------------------------------------
+ [Class]    BinaryConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_word_async
+    [Method]   join_words
+    [Method]   validate_input
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] annotations
+
+MODULE: pyrit.prompt_converter.braille_converter
+------------------------------------------------
+ [Class]    BrailleConverter
+    [Method]   _get_braile
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.caesar_converter
+-----------------------------------------------
+ [Class]    CaesarConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _caesar
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+ [Variable] string
+
+MODULE: pyrit.prompt_converter.character_space_converter
+--------------------------------------------------------
+ [Class]    CharacterSpaceConverter
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.charswap_attack_converter
+--------------------------------------------------------
+ [Class]    CharSwapConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _perturb_word
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+ [Variable] string
+
+MODULE: pyrit.prompt_converter.codechameleon_converter
+------------------------------------------------------
+ [Class]    CodeChameleonConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _encrypt_binary_tree
+    [Method]   _encrypt_length
+    [Method]   _encrypt_odd_even
+    [Method]   _encrypt_reverse
+    [Method]   _stringify_decrypt
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _decrypt_binary_tree
+    [Attribute] _decrypt_length
+    [Attribute] _decrypt_odd_even
+    [Attribute] _decrypt_reverse
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] inspect
+ [Variable] json
+ [Variable] pathlib
+ [Variable] re
+ [Variable] textwrap
+
+MODULE: pyrit.prompt_converter.colloquial_wordswap_converter
+------------------------------------------------------------
+ [Class]    ColloquialWordswapConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.denylist_converter
+-------------------------------------------------
+ [Class]    DenylistConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.diacritic_converter
+--------------------------------------------------
+ [Class]    DiacriticConverter
+    [Method]   __init__
+    [Method]   _add_diacritic
+    [Method]   _build_identifier
+    [Method]   _get_accent_mark
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+ [Variable] unicodedata
+
+MODULE: pyrit.prompt_converter.ecoji_converter
+----------------------------------------------
+ [Class]    EcojiConverter
+    [Method]   __init__
+    [Method]   _encode_to_ecoji
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] ecoji
+ [Variable] io
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.emoji_converter
+----------------------------------------------
+ [Class]    EmojiConverter
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] emoji_dict
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.first_letter_converter
+-----------------------------------------------------
+ [Class]    FirstLetterConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_word_async
+    [Method]   join_words
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.flip_converter
+---------------------------------------------
+ [Class]    FlipConverter
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.human_in_the_loop_converter
+----------------------------------------------------------
+ [Class]    HumanInTheLoopConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.image_compression_converter
+----------------------------------------------------------
+ [Class]    ImageCompressionConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _compress_image
+    [Method]   _handle_original_image_fallback
+    [Method]   _read_image_from_url
+    [Method]   _should_compress
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] Image
+ [Variable] aiohttp
+ [Variable] base64
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.insert_punctuation_converter
+-----------------------------------------------------------
+ [Class]    InsertPunctuationConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _insert_between_words
+    [Method]   _insert_punctuation
+    [Method]   _insert_within_words
+    [Method]   _is_valid_punctuation
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] default_punctuation_list
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+ [Variable] re
+ [Variable] string
+
+MODULE: pyrit.prompt_converter.leetspeak_converter
+--------------------------------------------------
+ [Class]    LeetspeakConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.llm_generic_text_converter
+---------------------------------------------------------
+ [Class]    LLMGenericTextConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] REQUIRED_VALUE
+ [Variable] hashlib
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.prompt_converter.malicious_question_generator_converter
+---------------------------------------------------------------------
+ [Class]    MaliciousQuestionGeneratorConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   input_supported
+    [Method]   output_supported
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.math_obfuscation_converter
+---------------------------------------------------------
+ [Class]    MathObfuscationConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] DEFAULT_HINT
+    [Attribute] DEFAULT_SUFFIX
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.math_prompt_converter
+----------------------------------------------------
+ [Class]    MathPromptConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.morse_converter
+----------------------------------------------
+ [Class]    MorseConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _morse
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.nato_converter
+---------------------------------------------
+ [Class]    NatoConverter
+    [Method]   _convert_to_nato
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _NATO_MAP
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.negation_trap_converter
+------------------------------------------------------
+ [Class]    NegationTrapConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   input_supported
+    [Method]   output_supported
+    [Attribute] DEFAULT_TEMPLATE
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] asyncio
+
+MODULE: pyrit.prompt_converter.noise_converter
+----------------------------------------------
+ [Class]    NoiseConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] textwrap
+
+MODULE: pyrit.prompt_converter.pdf_converter
+--------------------------------------------
+ [Class]    PDFConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _generate_pdf
+    [Method]   _inject_text_into_page
+    [Method]   _modify_existing_pdf
+    [Method]   _prepare_content
+    [Method]   _serialize_pdf
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] ast
+ [Variable] canvas
+ [Variable] hashlib
+ [Variable] logger
+ [Variable] mm
+
+MODULE: pyrit.prompt_converter.persuasion_converter
+---------------------------------------------------
+ [Class]    PersuasionConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   send_persuasion_prompt_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] uuid
+
+MODULE: pyrit.prompt_converter.prompt_converter
+-----------------------------------------------
+ [Class]    ConverterResult
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+ [Class]    PromptConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _create_identifier
+    [Method]   _replace_text_match
+    [Method]   convert_async
+    [Method]   convert_tokens_async
+    [Method]   input_supported
+    [Method]   output_supported
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Function] get_converter_modalities
+ [Variable] abc
+ [Variable] asyncio
+ [Variable] inspect
+ [Variable] prompt_converter
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.qr_code_converter
+------------------------------------------------
+ [Class]    QRCodeConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] segno
+
+MODULE: pyrit.prompt_converter.random_capital_letters_converter
+---------------------------------------------------------------
+ [Class]    RandomCapitalLettersConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   generate_random_positions
+    [Method]   is_percentage
+    [Method]   string_to_upper_case_by_percentage
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.random_translation_converter
+-----------------------------------------------------------
+ [Class]    RandomTranslationConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _DEFAULT_LANGUAGES_SEED_PROMPT_PATH
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] DATASETS_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.repeat_token_converter
+-----------------------------------------------------
+ [Class]    RepeatTokenConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.rot13_converter
+----------------------------------------------
+ [Class]    ROT13Converter
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] codecs
+
+MODULE: pyrit.prompt_converter.search_replace_converter
+-------------------------------------------------------
+ [Class]    SearchReplaceConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] random
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.selective_text_converter
+-------------------------------------------------------
+ [Class]    SelectiveTextConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _convert_char_level_async
+    [Method]   _convert_word_level_async
+    [Method]   _validate_converter
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.string_join_converter
+----------------------------------------------------
+ [Class]    StringJoinConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.suffix_append_converter
+------------------------------------------------------
+ [Class]    SuffixAppendConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.superscript_converter
+----------------------------------------------------
+ [Class]    SuperscriptConverter
+    [Method]   convert_word_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] _superscript_map
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.template_segment_converter
+---------------------------------------------------------
+ [Class]    TemplateSegmentConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _split_prompt_into_segments
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] hashlib
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.tense_converter
+----------------------------------------------
+ [Class]    TenseConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.text_jailbreak_converter
+-------------------------------------------------------
+ [Class]    TextJailbreakConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.text_selection_strategy
+------------------------------------------------------
+ [Class]    AllWordsSelectionStrategy
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    IndexSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    KeywordSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    PositionSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    ProportionSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    RangeSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    RegexSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    TextSelectionStrategy
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    TokenSelectionStrategy
+    [Method]   select_range
+    [Attribute] _abc_impl
+ [Class]    WordIndexSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    WordKeywordSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    WordPositionSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    WordProportionSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    WordRegexSelectionStrategy
+    [Method]   __init__
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Class]    WordSelectionStrategy
+    [Method]   select_range
+    [Method]   select_words
+    [Attribute] _abc_impl
+ [Variable] abc
+ [Variable] random
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.token_smuggling
+----------------------------------------------
+ [Variable] ascii_smuggler_converter
+ [Variable] base
+ [Variable] sneaky_bits_smuggler_converter
+ [Variable] variation_selector_smuggler_converter
+
+MODULE: pyrit.prompt_converter.token_smuggling.ascii_smuggler_converter
+-----------------------------------------------------------------------
+ [Class]    AsciiSmugglerConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   decode_message
+    [Method]   encode_message
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.token_smuggling.base
+---------------------------------------------------
+ [Class]    SmugglerConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   decode_message
+    [Method]   encode_message
+    [Method]   input_supported
+    [Method]   output_supported
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] abc
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.token_smuggling.sneaky_bits_smuggler_converter
+-----------------------------------------------------------------------------
+ [Class]    SneakyBitsSmugglerConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   decode_message
+    [Method]   encode_message
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.token_smuggling.variation_selector_smuggler_converter
+------------------------------------------------------------------------------------
+ [Class]    VariationSelectorSmugglerConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   decode_message
+    [Method]   decode_visible_hidden
+    [Method]   encode_message
+    [Method]   encode_visible_hidden
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_converter.tone_converter
+---------------------------------------------
+ [Class]    ToneConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.toxic_sentence_generator_converter
+-----------------------------------------------------------------
+ [Class]    ToxicSentenceGeneratorConverter
+    [Method]   __init__
+    [Method]   convert_async
+    [Method]   input_supported
+    [Method]   output_supported
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+
+MODULE: pyrit.prompt_converter.translation_converter
+----------------------------------------------------
+ [Class]    TranslationConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _send_translation_prompt_async
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] uuid
+
+MODULE: pyrit.prompt_converter.transparency_attack_converter
+------------------------------------------------------------
+ [Class]    TransparencyAttackConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _compute_mse_loss
+    [Method]   _create_blended_image
+    [Method]   _load_and_preprocess_image
+    [Method]   _save_blended_image
+    [Method]   _validate_input_image
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Class]    _AdamOptimizer
+    [Method]   __init__
+    [Method]   update
+ [Variable] Image
+ [Variable] base64
+ [Variable] logger
+ [Variable] logging
+ [Variable] numpy
+
+MODULE: pyrit.prompt_converter.unicode_confusable_converter
+-----------------------------------------------------------
+ [Class]    UnicodeConfusableConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _confusable
+    [Method]   _generate_perturbed_prompts
+    [Method]   _get_homoglyph_variants
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+ [Variable] re
+
+MODULE: pyrit.prompt_converter.unicode_replacement_converter
+------------------------------------------------------------
+ [Class]    UnicodeReplacementConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_word_async
+    [Method]   join_words
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.unicode_sub_converter
+----------------------------------------------------
+ [Class]    UnicodeSubstitutionConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_converter.url_converter
+--------------------------------------------
+ [Class]    UrlConverter
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] urllib
+
+MODULE: pyrit.prompt_converter.variation_converter
+--------------------------------------------------
+ [Class]    VariationConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   send_variation_prompt_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] CONVERTER_SEED_PROMPT_PATH
+ [Variable] REQUIRED_VALUE
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] pathlib
+ [Variable] uuid
+
+MODULE: pyrit.prompt_converter.word_level_converter
+---------------------------------------------------
+ [Class]    WordLevelConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   convert_async
+    [Method]   convert_word_async
+    [Method]   join_words
+    [Method]   validate_input
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] abc
+
+MODULE: pyrit.prompt_converter.zalgo_converter
+----------------------------------------------
+ [Class]    ZalgoConverter
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _normalize_intensity
+    [Method]   convert_word_async
+    [Method]   validate_input
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+ [Variable] MAX_INTENSITY
+ [Variable] ZALGO_MARKS
+ [Variable] logger
+ [Variable] logging
+ [Variable] random
+
+MODULE: pyrit.prompt_converter.zero_width_converter
+---------------------------------------------------
+ [Class]    ZeroWidthConverter
+    [Method]   convert_async
+    [Attribute] SUPPORTED_INPUT_TYPES
+    [Attribute] SUPPORTED_OUTPUT_TYPES
+    [Attribute] ZERO_WIDTH_SPACE
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] supported_input_types
+    [Attribute] supported_output_types
+
+MODULE: pyrit.prompt_normalizer
+-------------------------------
+ [Variable] normalizer_request
+ [Variable] prompt_converter_configuration
+ [Variable] prompt_normalizer
+
+MODULE: pyrit.prompt_normalizer.normalizer_request
+--------------------------------------------------
+ [Class]    NormalizerRequest
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+
+MODULE: pyrit.prompt_normalizer.prompt_converter_configuration
+--------------------------------------------------------------
+ [Class]    PromptConverterConfiguration
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+    [Attribute] indexes_to_apply
+    [Attribute] prompt_data_types_to_apply
+
+MODULE: pyrit.prompt_normalizer.prompt_normalizer
+-------------------------------------------------
+ [Class]    PromptNormalizer
+    [Method]   __init__
+    [Method]   _calc_hash
+    [Method]   add_prepended_conversation_to_memory
+    [Method]   convert_values
+    [Method]   send_prompt_async
+    [Method]   send_prompt_batch_to_target_async
+    [Attribute] _memory
+ [Variable] asyncio
+ [Variable] copy
+ [Variable] logger
+ [Variable] logging
+ [Variable] traceback
+
+MODULE: pyrit.prompt_target
+---------------------------
+ [Variable] azure_blob_storage_target
+ [Variable] azure_ml_chat_target
+ [Variable] batch_helper
+ [Variable] common
+ [Variable] crucible_target
+ [Variable] gandalf_target
+ [Variable] http_target
+ [Variable] hugging_face
+ [Variable] openai
+ [Variable] playwright_copilot_target
+ [Variable] playwright_target
+ [Variable] prompt_shield_target
+ [Variable] text_target
+ [Variable] websocket_copilot_target
+
+MODULE: pyrit.prompt_target.azure_blob_storage_target
+-----------------------------------------------------
+ [Class]    AzureBlobStorageTarget
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _create_container_client_async
+    [Method]   _parse_url
+    [Method]   _upload_blob_async
+    [Method]   _validate_request
+    [Attribute] AZURE_STORAGE_CONTAINER_ENVIRONMENT_VARIABLE
+    [Attribute] SAS_TOKEN_ENVIRONMENT_VARIABLE
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Class]    SupportedContentType
+    [Attribute] HTML
+    [Attribute] PLAIN_TEXT
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.prompt_target.azure_ml_chat_target
+------------------------------------------------
+ [Class]    AzureMLChatTarget
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _complete_chat_async
+    [Method]   _construct_http_body_async
+    [Method]   _get_headers
+    [Method]   _initialize_vars
+    [Method]   _validate_request
+    [Method]   is_json_response_supported
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] api_key_environment_variable
+    [Attribute] endpoint_uri_environment_variable
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+ [Variable] net_utility
+
+MODULE: pyrit.prompt_target.batch_helper
+----------------------------------------
+ [Function] _get_chunks
+ [Function] _validate_rate_limit_parameters
+ [Function] batch_task_async
+ [Variable] asyncio
+
+MODULE: pyrit.prompt_target.crucible_target
+-------------------------------------------
+ [Class]    CrucibleTarget
+    [Method]   __init__
+    [Method]   _complete_text_async
+    [Method]   _validate_request
+    [Attribute] API_KEY_ENVIRONMENT_VARIABLE
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] default_values
+ [Variable] logger
+ [Variable] logging
+ [Variable] net_utility
+
+MODULE: pyrit.prompt_target.gandalf_target
+------------------------------------------
+ [Class]    GandalfLevel
+    [Attribute] LEVEL_1
+    [Attribute] LEVEL_10
+    [Attribute] LEVEL_2
+    [Attribute] LEVEL_3
+    [Attribute] LEVEL_4
+    [Attribute] LEVEL_5
+    [Attribute] LEVEL_6
+    [Attribute] LEVEL_7
+    [Attribute] LEVEL_8
+    [Attribute] LEVEL_9
+ [Class]    GandalfTarget
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _complete_text_async
+    [Method]   _validate_request
+    [Method]   check_password
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] enum
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] net_utility
+
+MODULE: pyrit.prompt_target.playwright_copilot_target
+-----------------------------------------------------
+ [Class]    CopilotSelectors
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Class]    CopilotType
+    [Attribute] CONSUMER
+    [Attribute] M365
+ [Class]    PlaywrightCopilotTarget
+    [Method]   __init__
+    [Method]   _assemble_response
+    [Method]   _build_identifier
+    [Method]   _check_login_requirement_async
+    [Method]   _click_dropdown_button_async
+    [Method]   _count_images_in_groups
+    [Method]   _extract_all_images_async
+    [Method]   _extract_and_filter_text_async
+    [Method]   _extract_content_if_ready_async
+    [Method]   _extract_fallback_text_async
+    [Method]   _extract_images_from_iframes
+    [Method]   _extract_images_from_message_groups
+    [Method]   _extract_multimodal_content_async
+    [Method]   _extract_text_from_message_groups
+    [Method]   _filter_placeholder_text
+    [Method]   _get_selectors
+    [Method]   _interact_with_copilot_async
+    [Method]   _process_image_elements
+    [Method]   _send_text_async
+    [Method]   _upload_image_async
+    [Method]   _validate_request
+    [Method]   _wait_for_images_to_stabilize
+    [Method]   _wait_for_response_async
+    [Method]   _wait_minimum_time
+    [Method]   send_prompt_async
+    [Attribute] ARIA_LABEL_THUMBNAIL
+    [Attribute] ATTR_ID
+    [Attribute] ATTR_SRC
+    [Attribute] IMAGE_DATA_URL_PREFIX
+    [Attribute] IMAGE_STABILITY_ITERATIONS
+    [Attribute] LOGIN_REQUIRED_HEADER
+    [Attribute] M365_URL_IDENTIFIER
+    [Attribute] MAX_IMAGE_WAIT_SECONDS
+    [Attribute] MAX_WAIT_TIME_SECONDS
+    [Attribute] MIN_IMAGE_WAIT_SECONDS
+    [Attribute] PLACEHOLDER_GENERATING
+    [Attribute] PLACEHOLDER_GENERATING_RESPONSE
+    [Attribute] PLACEHOLDER_THINKING
+    [Attribute] POLL_INTERVAL_MS
+    [Attribute] RESPONSE_COMPLETE_WAIT_MS
+    [Attribute] RETRY_ATTEMPTS
+    [Attribute] RETRY_DELAY_MS
+    [Attribute] SELECTOR_IFRAME
+    [Attribute] SELECTOR_IMAGE
+    [Attribute] SUPPORTED_DATA_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] Page
+ [Variable] TYPE_CHECKING
+ [Variable] asyncio
+ [Variable] logger
+ [Variable] logging
+ [Variable] time
+
+MODULE: pyrit.prompt_target.playwright_target
+---------------------------------------------
+ [Class]    InteractionFunction
+    [Method]   __call__
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    PlaywrightTarget
+    [Method]   __init__
+    [Method]   _validate_request
+    [Attribute] SUPPORTED_DATA_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] Page
+ [Variable] TYPE_CHECKING
+
+MODULE: pyrit.prompt_target.prompt_shield_target
+------------------------------------------------
+ [Class]    PromptShieldTarget
+    [Method]   __init__
+    [Method]   _add_auth_param_to_headers
+    [Method]   _build_identifier
+    [Method]   _input_parser
+    [Method]   _validate_request
+    [Method]   _validate_response
+    [Attribute] API_KEY_ENVIRONMENT_VARIABLE
+    [Attribute] ENDPOINT_URI_ENVIRONMENT_VARIABLE
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] default_values
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] net_utility
+
+MODULE: pyrit.prompt_target.rpc_client
+--------------------------------------
+ [!] Could not inspect module: No module named 'rpyc'
+
+MODULE: pyrit.prompt_target.text_target
+---------------------------------------
+ [Class]    TextTarget
+    [Method]   __init__
+    [Method]   _validate_request
+    [Method]   cleanup_target
+    [Method]   import_scores_from_csv
+    [Method]   send_prompt_async
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] csv
+ [Variable] json
+ [Variable] sys
+
+MODULE: pyrit.prompt_target.websocket_copilot_target
+----------------------------------------------------
+ [Class]    CopilotMessageType
+    [Attribute] FINAL_CONTENT
+    [Attribute] PARTIAL_RESPONSE
+    [Attribute] PING
+    [Attribute] STREAM_END
+    [Attribute] UNKNOWN
+    [Attribute] USER_PROMPT
+    [Attribute] denominator
+    [Attribute] imag
+    [Attribute] numerator
+    [Attribute] real
+ [Class]    WebSocketCopilotTarget
+    [Method]   __init__
+    [Method]   _build_identifier
+    [Method]   _build_prompt_message
+    [Method]   _build_websocket_url_async
+    [Method]   _connect_and_send
+    [Method]   _dict_to_websocket
+    [Method]   _generate_consistent_copilot_ids
+    [Method]   _is_start_of_session
+    [Method]   _parse_raw_message
+    [Method]   _validate_request
+    [Attribute] CONNECTION_TIMEOUT_SECONDS
+    [Attribute] RESPONSE_TIMEOUT_SECONDS
+    [Attribute] SUPPORTED_DATA_TYPES
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+ [Variable] asyncio
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+ [Variable] websockets
+
+MODULE: pyrit.registry
+----------------------
+ [Variable] base
+ [Variable] class_registries
+ [Variable] discovery
+ [Variable] instance_registries
+
+MODULE: pyrit.registry.base
+---------------------------
+ [Class]    RegistryProtocol
+    [Method]   __contains__
+    [Method]   __iter__
+    [Method]   __len__
+    [Method]   get_names
+    [Method]   list_metadata
+    [Attribute] _abc_impl
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Function] _matches_filters
+ [Variable] MetadataT
+
+MODULE: pyrit.registry.class_registries
+---------------------------------------
+ [Variable] base_class_registry
+ [Variable] initializer_registry
+ [Variable] scenario_registry
+
+MODULE: pyrit.registry.class_registries.base_class_registry
+-----------------------------------------------------------
+ [Class]    BaseClassRegistry
+    [Method]   __contains__
+    [Method]   __init__
+    [Method]   __iter__
+    [Method]   __len__
+    [Method]   _build_base_metadata
+    [Method]   _build_metadata
+    [Method]   _discover
+    [Method]   _ensure_discovered
+    [Method]   _get_registry_name
+    [Method]   create_instance
+    [Method]   get_class
+    [Method]   get_entry
+    [Method]   get_names
+    [Method]   list_metadata
+    [Method]   register
+    [Attribute] _abc_impl
+    [Attribute] _instances
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Class]    ClassEntry
+    [Method]   __init__
+    [Method]   create_instance
+ [Variable] MetadataT
+ [Variable] T
+
+MODULE: pyrit.registry.class_registries.initializer_registry
+------------------------------------------------------------
+ [Class]    InitializerMetadata
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] hash
+ [Class]    InitializerRegistry
+    [Method]   __init__
+    [Method]   _build_metadata
+    [Method]   _discover
+    [Method]   _process_file
+    [Method]   _register_initializer
+    [Method]   resolve_initializer_paths
+    [Method]   resolve_script_paths
+    [Attribute] _abc_impl
+    [Attribute] _instances
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Variable] PYRIT_PATH
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] importlib
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.registry.class_registries.scenario_registry
+---------------------------------------------------------
+ [Class]    ScenarioMetadata
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] hash
+ [Class]    ScenarioRegistry
+    [Method]   __init__
+    [Method]   _build_metadata
+    [Method]   _discover
+    [Method]   _discover_builtin_scenarios
+    [Method]   discover_user_scenarios
+    [Attribute] _abc_impl
+    [Attribute] _instances
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.registry.discovery
+--------------------------------
+ [Function] _process_file
+ [Function] discover_in_directory
+ [Function] discover_in_package
+ [Function] discover_subclasses_in_loaded_modules
+ [Variable] T
+ [Variable] importlib
+ [Variable] inspect
+ [Variable] logger
+ [Variable] logging
+ [Variable] pkgutil
+
+MODULE: pyrit.registry.instance_registries
+------------------------------------------
+ [Variable] base_instance_registry
+ [Variable] scorer_registry
+
+MODULE: pyrit.registry.instance_registries.base_instance_registry
+-----------------------------------------------------------------
+ [Class]    BaseInstanceRegistry
+    [Method]   __contains__
+    [Method]   __init__
+    [Method]   __iter__
+    [Method]   __len__
+    [Method]   _build_metadata
+    [Method]   get
+    [Method]   get_names
+    [Method]   list_metadata
+    [Method]   register
+    [Attribute] _abc_impl
+    [Attribute] _instances
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Variable] MetadataT
+ [Variable] T
+ [Variable] annotations
+
+MODULE: pyrit.registry.instance_registries.scorer_registry
+----------------------------------------------------------
+ [Class]    ScorerRegistry
+    [Method]   _build_metadata
+    [Method]   get_instance_by_name
+    [Method]   register_instance
+    [Attribute] _abc_impl
+    [Attribute] _instances
+    [Attribute] _is_protocol
+    [Attribute] _is_runtime_protocol
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.scenario
+----------------------
+ [Variable] _airt_module
+ [Variable] _foundry_module
+ [Variable] _garak_module
+ [Variable] airt
+ [Variable] core
+ [Variable] foundry
+ [Variable] garak
+ [Variable] scenarios
+ [Variable] sys
+
+MODULE: pyrit.scenario.core
+---------------------------
+ [Variable] EXPLICIT_SEED_GROUPS_KEY
+ [Variable] atomic_attack
+ [Variable] dataset_configuration
+ [Variable] scenario
+ [Variable] scenario_strategy
+
+MODULE: pyrit.scenario.core.atomic_attack
+-----------------------------------------
+ [Class]    AtomicAttack
+    [Method]   __init__
+    [Method]   filter_seed_groups_by_objectives
+    [Method]   run_async
+    [Attribute] objectives
+    [Attribute] seed_groups
+ [Variable] TYPE_CHECKING
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.scenario.core.dataset_configuration
+-------------------------------------------------
+ [Class]    DatasetConfiguration
+    [Method]   __init__
+    [Method]   _apply_max_dataset_size
+    [Method]   _load_seed_groups_for_dataset
+    [Method]   get_all_seed_attack_groups
+    [Method]   get_all_seed_groups
+    [Method]   get_all_seeds
+    [Method]   get_default_dataset_names
+    [Method]   get_seed_attack_groups
+    [Method]   get_seed_groups
+    [Method]   has_data_source
+ [Variable] EXPLICIT_SEED_GROUPS_KEY
+ [Variable] TYPE_CHECKING
+ [Variable] annotations
+ [Variable] random
+
+MODULE: pyrit.scenario.core.scenario
+------------------------------------
+ [Class]    Scenario
+    [Method]   __init__
+    [Method]   _execute_scenario_async
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_baseline
+    [Method]   _get_baseline_data
+    [Method]   _get_completed_objectives_for_attack
+    [Method]   _get_remaining_atomic_attacks_async
+    [Method]   _raise_dataset_exception
+    [Method]   _update_scenario_result_async
+    [Method]   _validate_stored_scenario
+    [Method]   initialize_async
+    [Method]   run_async
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+ [Variable] REQUIRED_VALUE
+ [Variable] TYPE_CHECKING
+ [Variable] asyncio
+ [Variable] logger
+ [Variable] logging
+ [Variable] textwrap
+ [Variable] uuid
+
+MODULE: pyrit.scenario.core.scenario_strategy
+---------------------------------------------
+ [Class]    ScenarioCompositeStrategy
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __str__
+    [Method]   extract_single_strategy_values
+    [Method]   get_composite_name
+    [Method]   normalize_compositions
+    [Attribute] is_single_strategy
+    [Attribute] name
+    [Attribute] strategies
+ [Class]    ScenarioStrategy
+ [Variable] T
+
+MODULE: pyrit.scenario.printer
+------------------------------
+ [Variable] console_printer
+ [Variable] scenario_result_printer
+
+MODULE: pyrit.scenario.printer.console_printer
+----------------------------------------------
+ [Class]    ConsoleScenarioResultPrinter
+    [Method]   __init__
+    [Method]   _get_rate_color
+    [Method]   _print_colored
+    [Method]   _print_footer
+    [Method]   _print_header
+    [Method]   _print_section_header
+    [Method]   print_summary_async
+    [Attribute] _abc_impl
+ [Variable] Fore
+ [Variable] Style
+ [Variable] textwrap
+
+MODULE: pyrit.scenario.printer.scenario_result_printer
+------------------------------------------------------
+ [Class]    ScenarioResultPrinter
+    [Method]   print_summary_async
+    [Attribute] _abc_impl
+
+MODULE: pyrit.scenario.scenarios
+--------------------------------
+ [Variable] airt
+ [Variable] foundry
+ [Variable] garak
+
+MODULE: pyrit.scenario.scenarios.airt
+-------------------------------------
+ [Variable] content_harms
+ [Variable] cyber
+ [Variable] leakage_scenario
+ [Variable] psychosocial_scenario
+ [Variable] scam
+
+MODULE: pyrit.scenario.scenarios.airt.content_harms
+---------------------------------------------------
+ [Class]    ContentHarms
+    [Method]   __init__
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_scorer
+    [Method]   _get_strategy_attacks
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    ContentHarmsDatasetConfiguration
+    [Method]   get_seed_groups
+ [Class]    ContentHarmsStrategy
+    [Attribute] ALL
+    [Attribute] Fairness
+    [Attribute] Harassment
+    [Attribute] Hate
+    [Attribute] Leakage
+    [Attribute] Misinformation
+    [Attribute] Sexual
+    [Attribute] Violence
+ [Variable] AttackStrategyT
+ [Variable] os
+
+MODULE: pyrit.scenario.scenarios.airt.cyber
+-------------------------------------------
+ [Class]    Cyber
+    [Method]   __init__
+    [Method]   _get_atomic_attack_from_strategy
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_objective_scorer
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    CyberStrategy
+    [Attribute] ALL
+    [Attribute] MULTI_TURN
+    [Attribute] SINGLE_TURN
+ [Variable] SCORER_SEED_PROMPT_PATH
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.scenario.scenarios.airt.leakage_scenario
+------------------------------------------------------
+ [Class]    LeakageScenario
+    [Method]   __init__
+    [Method]   _create_crescendo_attack
+    [Method]   _create_first_letter_attack
+    [Method]   _create_image_attack
+    [Method]   _create_role_play_attack
+    [Method]   _ensure_blank_image_exists
+    [Method]   _get_atomic_attack_from_strategy_async
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_objective_scorer
+    [Method]   _get_default_objectives
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    LeakageStrategy
+    [Attribute] ALL
+    [Attribute] CRESCENDO
+    [Attribute] FIRST_LETTER
+    [Attribute] IMAGE
+    [Attribute] IP
+    [Attribute] MULTI_TURN
+    [Attribute] ROLE_PLAY
+    [Attribute] SENSITIVE_DATA
+    [Attribute] SINGLE_TURN
+ [Variable] DATASETS_PATH
+ [Variable] Image
+ [Variable] SCORER_SEED_PROMPT_PATH
+ [Variable] os
+
+MODULE: pyrit.scenario.scenarios.airt.psychosocial_scenario
+-----------------------------------------------------------
+ [Class]    PsychosocialScenario
+    [Method]   __init__
+    [Method]   _create_attacks_for_strategy
+    [Method]   _create_multi_turn_attack
+    [Method]   _create_scoring_config
+    [Method]   _create_single_turn_attacks
+    [Method]   _expand_strategies_to_base
+    [Method]   _extract_harm_category_filter
+    [Method]   _filter_by_harm_category
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_scorer
+    [Method]   _resolve_seed_groups
+    [Attribute] DEFAULT_SUBHARM_CONFIGS
+    [Attribute] VERSION
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+ [Class]    PsychosocialStrategy
+    [Attribute] ALL
+    [Attribute] MULTI_TURN
+    [Attribute] SINGLE_TURN
+    [Attribute] imminent_crisis
+    [Attribute] licensed_therapist
+ [Class]    ResolvedSeedData
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Class]    SubharmConfig
+    [Method]   __eq__
+    [Method]   __init__
+    [Method]   __repr__
+ [Variable] AttackStrategyT
+ [Variable] DATASETS_PATH
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+ [Variable] pathlib
+ [Variable] yaml
+
+MODULE: pyrit.scenario.scenarios.airt.scam
+------------------------------------------
+ [Class]    Scam
+    [Method]   __init__
+    [Method]   _get_atomic_attack_from_strategy
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_objective_scorer
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    ScamStrategy
+    [Attribute] ALL
+    [Attribute] ContextCompliance
+    [Attribute] MULTI_TURN
+    [Attribute] PersuasiveRedTeamingAttack
+    [Attribute] RolePlay
+    [Attribute] SINGLE_TURN
+ [Variable] EXECUTOR_RED_TEAM_PATH
+ [Variable] PERSUASION_DECEPTION_PATH
+ [Variable] SCORER_SEED_PROMPT_PATH
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.scenario.scenarios.foundry
+----------------------------------------
+ [Variable] red_team_agent
+
+MODULE: pyrit.scenario.scenarios.foundry.red_team_agent
+-------------------------------------------------------
+ [Class]    FoundryScenario
+    [Method]   __init__
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_attack
+    [Method]   _get_attack_from_strategy
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_scoring_config
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    FoundryStrategy
+    [Attribute] ALL
+    [Attribute] AnsiAttack
+    [Attribute] AsciiArt
+    [Attribute] AsciiSmuggler
+    [Attribute] Atbash
+    [Attribute] Base64
+    [Attribute] Binary
+    [Attribute] Caesar
+    [Attribute] CharSwap
+    [Attribute] CharacterSpace
+    [Attribute] Crescendo
+    [Attribute] DIFFICULT
+    [Attribute] Diacritic
+    [Attribute] EASY
+    [Attribute] Flip
+    [Attribute] Jailbreak
+    [Attribute] Leetspeak
+    [Attribute] MODERATE
+    [Attribute] Morse
+    [Attribute] MultiTurn
+    [Attribute] Pair
+    [Attribute] ROT13
+    [Attribute] StringJoin
+    [Attribute] SuffixAppend
+    [Attribute] Tap
+    [Attribute] Tense
+    [Attribute] UnicodeConfusable
+    [Attribute] UnicodeSubstitution
+    [Attribute] Url
+ [Class]    RedTeamAgent
+    [Method]   __init__
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_attack
+    [Method]   _get_attack_from_strategy
+    [Method]   _get_default_adversarial_target
+    [Method]   _get_default_scoring_config
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Variable] AttackStrategyT
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+
+MODULE: pyrit.scenario.scenarios.garak
+--------------------------------------
+ [Variable] encoding
+
+MODULE: pyrit.scenario.scenarios.garak.encoding
+-----------------------------------------------
+ [Class]    Encoding
+    [Method]   __init__
+    [Method]   _get_atomic_attacks_async
+    [Method]   _get_converter_attacks
+    [Method]   _get_prompt_attacks
+    [Method]   _resolve_seed_groups
+    [Attribute] _abc_impl
+    [Attribute] atomic_attack_count
+    [Attribute] name
+    [Attribute] version
+ [Class]    EncodingDatasetConfiguration
+    [Method]   get_all_seed_attack_groups
+ [Class]    EncodingStrategy
+    [Attribute] ALL
+    [Attribute] ASCII85
+    [Attribute] AsciiSmuggler
+    [Attribute] Atbash
+    [Attribute] Base16
+    [Attribute] Base2048
+    [Attribute] Base32
+    [Attribute] Base64
+    [Attribute] Braille
+    [Attribute] Ecoji
+    [Attribute] Hex
+    [Attribute] LeetSpeak
+    [Attribute] MorseCode
+    [Attribute] NATO
+    [Attribute] QuotedPrintable
+    [Attribute] ROT13
+    [Attribute] UUencode
+    [Attribute] Zalgo
+ [Variable] logger
+ [Variable] logging
+
+MODULE: pyrit.score
+-------------------
+ [Variable] batch_scorer
+ [Variable] conversation_scorer
+ [Variable] float_scale
+ [Variable] human
+ [Variable] printer
+ [Variable] score_aggregator_result
+ [Variable] score_utils
+ [Variable] scorer
+ [Variable] scorer_evaluation
+ [Variable] scorer_prompt_validator
+ [Variable] true_false
+ [Variable] video_scorer
+
+MODULE: pyrit.score.batch_scorer
+--------------------------------
+ [Class]    BatchScorer
+    [Method]   __init__
+    [Method]   _remove_duplicates
+    [Method]   score_responses_by_filters_async
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.score.conversation_scorer
+---------------------------------------
+ [Class]    ConversationScorer
+    [Method]   _get_wrapped_scorer
+    [Method]   _score_async
+    [Method]   _score_piece_async
+    [Method]   validate_return_scores
+    [Attribute] _abc_impl
+    [Attribute] _default_validator
+    [Attribute] _identifier
+    [Attribute] _memory
+    [Attribute] evaluation_file_mapping
+    [Attribute] scorer_type
+ [Function] create_conversation_scorer
+ [Variable] uuid
+
+MODULE: pyrit.score.printer
+---------------------------
+ [Variable] console_scorer_printer
+ [Variable] scorer_printer
+
+MODULE: pyrit.score.printer.console_scorer_printer
+--------------------------------------------------
+ [Class]    ConsoleScorerPrinter
+    [Method]   __init__
+    [Method]   _get_quality_color
+    [Method]   _print_colored
+    [Method]   _print_harm_metrics
+    [Method]   _print_objective_metrics
+    [Method]   _print_scorer_info
+    [Method]   print_harm_scorer
+    [Method]   print_objective_scorer
+    [Attribute] _abc_impl
+ [Variable] Fore
+ [Variable] Style
+ [Variable] TYPE_CHECKING
+
+MODULE: pyrit.score.printer.scorer_printer
+------------------------------------------
+ [Class]    ScorerPrinter
+    [Method]   print_harm_scorer
+    [Method]   print_objective_scorer
+    [Attribute] _abc_impl
+
+MODULE: pyrit.score.score_aggregator_result
+-------------------------------------------
+ [Class]    ScoreAggregatorResult
+    [Method]   __delattr__
+    [Method]   __eq__
+    [Method]   __hash__
+    [Method]   __init__
+    [Method]   __repr__
+    [Method]   __setattr__
+    [Attribute] category
+    [Attribute] description
+    [Attribute] metadata
+    [Attribute] rationale
+    [Attribute] value
+
+MODULE: pyrit.score.score_utils
+-------------------------------
+ [Function] combine_metadata_and_categories
+ [Function] format_score_for_rationale
+ [Function] normalize_score_to_float
+ [Variable] ORIGINAL_FLOAT_VALUE_KEY
+
+MODULE: pyrit.score.scorer
+--------------------------
+ [Class]    Scorer
+    [Method]   __init__
+    [Method]   _create_identifier
+    [Method]   _extract_objective_from_response
+    [Method]   _get_supported_pieces
+    [Method]   _score_async
+    [Method]   _score_piece_async
+    [Method]   _score_value_with_llm
+    [Method]   evaluate_async
+    [Method]   get_scorer_metrics
+    [Method]   scale_value_float
+    [Method]   score_async
+    [Method]   score_image_async
+    [Method]   score_image_batch_async
+    [Method]   score_prompts_batch_async
+    [Method]   score_response_async
+    [Method]   score_response_multiple_scorers_async
+    [Method]   score_text_async
+    [Method]   validate_return_scores
+    [Attribute] _abc_impl
+    [Attribute] _identifier
+    [Attribute] _memory
+    [Attribute] evaluation_file_mapping
+    [Attribute] scorer_type
+ [Variable] TYPE_CHECKING
+ [Variable] abc
+ [Variable] annotations
+ [Variable] asyncio
+ [Variable] json
+ [Variable] logger
+ [Variable] logging
+ [Variable] uuid
+
+MODULE: pyrit.score.scorer_prompt_validator
+-------------------------------------------
+ [Class]    ScorerPromptValidator
+    [Method]   __init__
+    [Method]   is_message_piece_supported
+    [Method]   validate
+
+MODULE: pyrit.score.video_scorer
+--------------------------------
+ [Class]    _BaseVideoScorer
+    [Method]   __init__
+    [Method]   _extract_frames
+    [Method]   _score_frames_async
+    [Attribute] _DEFAULT_VIDEO_FRAMES_SAMPLING_NUM
+    [Attribute] _abc_impl
+ [Variable] logger
+ [Variable] logging
+ [Variable] os
+ [Variable] random
+ [Variable] tempfile
+ [Variable] uuid
+
+MODULE: pyrit.setup
+-------------------
+ [Variable] AZURE_SQL
+ [Variable] IN_MEMORY
+ [Variable] SQLITE
+ [Variable] initialization
+
+MODULE: pyrit.setup.initialization
+----------------------------------
+ [Function] _execute_initializers_async
+ [Function] _load_environment_files
+ [Function] _load_initializers_from_scripts
+ [Function] _print_msg
+ [Function] initialize_pyrit_async
+ [Variable] AZURE_SQL
+ [Variable] IN_MEMORY
+ [Variable] SQLITE
+ [Variable] TYPE_CHECKING
+ [Variable] dotenv
+ [Variable] logger
+ [Variable] logging
+ [Variable] path
+ [Variable] pathlib
+
+MODULE: pyrit.setup.initializers
+--------------------------------
+ [Variable] airt
+ [Variable] pyrit_initializer
+ [Variable] scenarios
+ [Variable] simple
+
+MODULE: pyrit.setup.initializers.airt
+-------------------------------------
+ [Class]    AIRTInitializer
+    [Method]   __init__
+    [Method]   _setup_adversarial_targets
+    [Method]   _setup_converter_target
+    [Method]   _setup_scorers
+    [Method]   initialize_async
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+ [Variable] os
+
+MODULE: pyrit.setup.initializers.pyrit_initializer
+--------------------------------------------------
+ [Class]    PyRITInitializer
+    [Method]   __init__
+    [Method]   _track_initialization_changes
+    [Method]   get_dynamic_default_values_info_async
+    [Method]   initialize_async
+    [Method]   initialize_with_tracking_async
+    [Method]   validate
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+ [Variable] sys
+
+MODULE: pyrit.setup.initializers.scenarios
+------------------------------------------
+ [Variable] load_default_datasets
+ [Variable] objective_list
+ [Variable] openai_objective_target
+
+MODULE: pyrit.setup.initializers.scenarios.load_default_datasets
+----------------------------------------------------------------
+ [Class]    LoadDefaultDatasets
+    [Method]   initialize_async
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+ [Variable] logger
+ [Variable] logging
+ [Variable] textwrap
+
+MODULE: pyrit.setup.initializers.scenarios.objective_list
+---------------------------------------------------------
+ [Class]    ScenarioObjectiveListInitializer
+    [Method]   initialize_async
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+
+MODULE: pyrit.setup.initializers.scenarios.openai_objective_target
+------------------------------------------------------------------
+ [Class]    ScenarioObjectiveTargetInitializer
+    [Method]   initialize_async
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+ [Variable] os
+
+MODULE: pyrit.setup.initializers.simple
+---------------------------------------
+ [Class]    SimpleInitializer
+    [Method]   __init__
+    [Method]   _setup_adversarial_targets
+    [Method]   _setup_converter_target
+    [Method]   _setup_scorers
+    [Method]   initialize_async
+    [Attribute] _abc_impl
+    [Attribute] description
+    [Attribute] execution_order
+    [Attribute] name
+    [Attribute] required_env_vars
+
+MODULE: pyrit.show_versions
+---------------------------
+ [Function] _get_deps_info
+ [Function] _get_sys_info
+ [Function] show_versions
+ [Variable] platform
+ [Variable] sys
+
+MODULE: pyrit.ui
+----------------
+
+MODULE: pyrit.ui.app
+--------------------
+ [Function] is_app_running
+ [Function] launch_app
+ [Variable] GLOBAL_MUTEX_NAME
+ [Variable] os
+ [Variable] subprocess
+ [Variable] sys
+ [Variable] traceback
+
+MODULE: pyrit.ui.connection_status
+----------------------------------
+ [!] Could not inspect module: No module named 'gradio'
+
+MODULE: pyrit.ui.rpc
+--------------------
+ [!] Could not inspect module: No module named 'rpyc'
+
+MODULE: pyrit.ui.rpc_client
+---------------------------
+ [!] Could not inspect module: No module named 'rpyc'
+
+MODULE: pyrit.ui.scorer
+-----------------------
+ [!] Could not inspect module: No module named 'gradio'

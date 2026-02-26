@@ -59,7 +59,7 @@ git branch
 
 ```powershell
 # Create virtual environment with Python 3.11
-py -3.11 -m venv venv
+py -3.13 -m venv venv
 
 # Activate it
 .\venv\Scripts\Activate.ps1
@@ -76,7 +76,7 @@ python --version
 
 ```bash
 # Create virtual environment
-python3.11 -m venv venv
+python3.13 -m venv venv
 
 # Or if using Python 3.13:
 # python3.13 -m venv venv
