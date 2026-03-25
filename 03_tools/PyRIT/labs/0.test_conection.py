@@ -18,8 +18,8 @@ async def quick_test():
         #endpoint=os.getenv("OPENAI_SCORER_ENDPOINT"),
         #api_key=os.getenv("OPENAI_SCORER_KEY")
         
-        model_name=os.getenv("OLLAMA_MODEL"),  
-        endpoint=os.getenv("OLLAMA_CHAT_ENDPOINT")
+        #model_name=os.getenv("OLLAMA_MODEL"),  
+        #endpoint=os.getenv("OLLAMA_CHAT_ENDPOINT")
     )
     print(f"✓ Target  : {target._model_name}\n✓ EndPoint  : {target._endpoint}")
     # Send ONE prompt
