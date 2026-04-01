@@ -11,38 +11,12 @@ It covers environment setup, core concepts, and hands-on attack labs using PyRIT
 
 ---
 
-## Folder Structure
-
-```
-PAI/
-├── README.md                        ← you are here
-│
-├── 01_setup/
-│   └── ENV_SETUP.md                 ← configure credentials for all AI backends
-│
-├── 02_concepts/
-│   └── CONCEPTS.md                  ← mental model, 3 roles, attack levels
-│
-└── 03_tools/
-    └── PyRIT/
-        ├── PYRIT_GUIDE.md           ← full PyRIT reference (targets, methods, converters)
-        └── labs/
-            ├── 0.test_conection.py  ← verify your setup
-            ├── 1.simple_attack.py   ← L1: one prompt, manual review
-            ├── 2.batch_attack.py    ← L2: batch + converters, manual review
-            ├── 3.scored_attack.py   ← L3: batch + auto scorer (pass/fail)
-            ├── 4_red_team_attack.py ← L4: LLM generates prompts automatically
-            └── 5_crescendo_attack.py← L5: multi-turn escalation + backtrack
-```
-
----
-
 ## Quick Start (3 steps)
 
 ```
-Step 1 → 01_setup/ENV_SETUP.md       configure your API key / local model
-Step 2 → 02_concepts/CONCEPTS.md     understand the 3 roles and attack ladder
-Step 3 → 03_tools/PyRIT/labs/        run the labs in order (0 → 5)
+Step 1 → ENV_SETUP.md       configure your API key / local model
+Step 2 → CONCEPTS.md        understand the 3 roles and attack ladder
+Step 3 → labs/              run the labs in order (0 → 5)
 ```
 
 ---
