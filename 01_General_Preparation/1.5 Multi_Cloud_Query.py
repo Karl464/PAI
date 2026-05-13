@@ -3,6 +3,7 @@ import asyncio
 from dotenv import load_dotenv
 from dotenv import find_dotenv
 from openai import OpenAI, AzureOpenAI
+from anthropic import Anthropic
 
 # Encuentra el archivo .env que se va a usar 
 env_path = find_dotenv() 
@@ -42,7 +43,14 @@ def get_client_and_model(provider="local"):
             api_key=os.getenv("LOCAL_GPT35turbo_CHAT_KEY")
         )
         model = os.getenv("LOCAL_GPT35turbo_CHAT_MODEL","gpt-4o")
+
+    elif provider == "claude":
+        # 
+        client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+        print("EndPoint: ",client._base_url)
         
+
     else:
     # Standard OpenAI Cloud client
         client = OpenAI(
@@ -61,25 +69,35 @@ def get_client_and_model(provider="local"):
 def run_prompt_test(provider):
     client, model = get_client_and_model(provider)
     
-    # The specific prompt you requested
     prompt = "Write a short story about the Roman Empire."
     
     print(f"\n--- [Connecting to {provider.upper()}] ---")
     print(f"Target Model: {model}")
     
     try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=200,
-            temperature=0.7
-        )
-        print("\n--- [Model Response] ---")
-        print(response.choices[0].message.content)
+        if provider == "claude":
+            # Anthropic uses its own API format
+            response = client.messages.create(
+                model=model,
+                max_tokens=200,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            print("\n--- [Model Response] ---")
+            print(response.content[0].text)
+        else:
+            # OpenAI-compatible providers (local, openai, azure)
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=200,
+                temperature=0.7
+            )
+            print("\n--- [Model Response] ---")
+            print(response.choices[0].message.content)
+
     except Exception as e:
         print(f"Error connecting to {provider}: {e}")
 
-
 if __name__ == "__main__":
-    selected_provider = "local" 
+    selected_provider = "claude" 
     run_prompt_test(selected_provider)
