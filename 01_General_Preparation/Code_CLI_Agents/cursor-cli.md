@@ -41,7 +41,15 @@ It prompts you to log in via your browser.
 cursor-agent --version
 ```
 
-## 6. Quick troubleshooting
+## 6. Check token usage / remaining budget
+
+There's no reliable built-in slash command for this yet — use the web dashboard:
+
+- **cursor.com/dashboard/usage** — the source of truth for premium/fast requests, tokens, and any on-demand (usage-based) spend across all your devices.
+- **Billing & Invoices** (from the dashboard): shows **Included Usage** (covered by your subscription) vs **On-Demand Usage** (billed at API rates once you exceed included usage). You can disable on-demand usage or set a spend cap here.
+- **Known caveat:** `cursor-agent`'s own JSON response includes a `usage` field (`inputTokens`/`outputTokens`/`cacheReadTokens`/`cacheWriteTokens`), but community reports show these numbers can disagree with the dashboard — treat the dashboard as authoritative.
+
+## 7. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

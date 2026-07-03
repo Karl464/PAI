@@ -63,7 +63,21 @@ First run walks you through choosing an auth method: Google OAuth (free tier —
 gemini --version
 ```
 
-## 7. Quick troubleshooting
+## 7. Check token usage / remaining budget
+
+Inside a session:
+```
+/stats model
+```
+Snapshot of current session token usage plus the limits tied to your current quota/auth method.
+
+Other ways to check:
+- **Session exit summary:** a usage summary is shown automatically when you exit a session.
+- **`/upgrade`** (when logged in with a Google account): opens the upgrade page in your browser showing your current tier and available plans with higher limits.
+- **API key users:** Google AI Studio dashboard or your Google Cloud project dashboard for historical API usage.
+- Typical free-tier daily limits: 1,000 requests/day (Google account/Code Assist Individual), 100 requests/day (Gemini API key, free tier), varies for Vertex AI Express Mode.
+
+## 8. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

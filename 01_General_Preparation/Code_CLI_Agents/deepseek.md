@@ -64,6 +64,30 @@ curl https://api.deepseek.com/chat/completions `
 | `deepcode`/community CLI command not found | npm global bin not on PATH | `npm config get prefix`, add `<prefix>` to User PATH, reopen terminal |
 | Env vars don't persist across sessions | Set with `$env:` (session-only) | Add to PowerShell profile, or set permanently via System Properties → Environment Variables |
 
+## Check remaining balance / budget
+
+DeepSeek bills directly against your API key balance (no separate CLI usage command since there's no single official CLI — see options above). Check it any time with the balance endpoint:
+
+```powershell
+curl -L -X GET "https://api.deepseek.com/user/balance" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:DEEPSEEK_API_KEY"
+```
+
+Response:
+```json
+{
+  "is_available": true,
+  "balance_infos": [
+    { "currency": "USD", "total_balance": "1.85", "granted_balance": "0.00", "topped_up_balance": "1.85" }
+  ]
+}
+```
+- `is_available: false` means your balance is insufficient for further paid calls (also surfaces as a `402` error on chat completion requests).
+- Top up at platform.deepseek.com/billing.
+- DeepSeek doesn't publish fixed public rate limits — limits are applied dynamically by account tier and server load, so the balance check (not a fixed quota) is your main budget signal.
+- If you're using DeepSeek through Claude Code or Copilot CLI (Options A/B above), those tools' own `/usage`/`/cost` commands report token counts, but the DeepSeek balance endpoint is still the authoritative source for remaining spend.
+
 ## Which option to pick
 
 - Already using Claude Code or GitHub Copilot CLI for your security-review workflow? **Option A/B** — zero new tooling, just swap the backend.

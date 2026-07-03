@@ -52,7 +52,22 @@ To sign out and purge saved credentials, run `/logout` inside the CLI prompt.
 agy --version
 ```
 
-## 6. Quick troubleshooting
+## 6. Check token usage / remaining budget
+
+- **Statusline:** the right side of the CLI statusline shows your remaining AI Credit count live (e.g. `AI Credits: 42`), and highlights when you're below the warning threshold.
+- **In-session command:**
+  ```
+  /usage
+  ```
+  Shows current quota status. Note a known reporting bug as of mid-2026: `/usage` can display stale/100% figures until you restart the session (`/quit` then relaunch `agy`) — treat it as a snapshot, not a live meter, and don't rely on it alone.
+- **Credits panel:**
+  ```
+  /credits
+  ```
+  Opens a dedicated panel with detailed credit-consumption statistics and a way to purchase more credits or upgrade your plan.
+- **Context overhead check:** `/context` shows how much of your window is consumed by the CLI's own system prompt/tools overhead — useful since Antigravity CLI's baseline overhead is heavier than the old Gemini CLI's and can eat quota fast on subagent-heavy tasks.
+
+## 7. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

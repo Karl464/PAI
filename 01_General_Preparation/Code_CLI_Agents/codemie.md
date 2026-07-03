@@ -52,12 +52,12 @@ codemie-gemini
 - Add another profile any time: `codemie setup` → **Add new profile**.
 - **Naming convention:** purpose-oriented and unique, e.g. `work-coding` for a standard dev profile. If you run multiple models for different tasks, name profiles so the model/use-case is obvious at a glance (e.g. `sast-review-claude`, `docs-gemini`).
 
-## 7. Usage tracking
+## 7. Check token usage / remaining budget
 
 ```powershell
 codemie analytics show
 ```
-Monitor your own token consumption and usage — useful for keeping tabs on a security-review workflow that may burn large context windows (e.g. Ghidra output triage).
+Monitor your own token consumption and usage per profile — useful for keeping tabs on a security-review workflow that may burn large context windows (e.g. Ghidra output triage). Since billing is centralized via EPAM SSO rather than a personal quota, this is a self-monitoring tool rather than a hard spend cap — there's no personal balance to run out of, but it's still worth checking if a profile's usage looks abnormally high (e.g. runaway subagent loops).
 
 ## 8. Cost & licensing summary
 

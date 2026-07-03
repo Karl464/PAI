@@ -67,7 +67,28 @@ Or use `/model` inside a session to switch interactively.
 
 **Skills:** drop reusable methodology packages under `~/.claude/skills/<name>/SKILL.md` (user-level, all projects) or `.claude/skills/` (project-level). Claude auto-discovers and loads relevant ones — this is where a custom Ghidra/PyGhidra SAST skill would live.
 
-## 5. Quick troubleshooting
+## 5. Check token usage / remaining budget
+
+Inside a session:
+```
+/usage
+```
+Shows plan usage bars for the rolling 5-hour window and weekly window, a breakdown by skills/subagents/plugins/MCP servers, and a locally-estimated dollar figure. Neither `/usage` nor `/cost` consumes tokens or modifies anything — read-only.
+
+Other useful commands:
+- `/status` — quick check of remaining allowance and exact reset time (faster than `/usage` when you just need "do I have room right now")
+- `/cost` — full session cost breakdown (API/pay-as-you-go users only; hidden by default for subscription plans since they're not billed per call)
+- `/stats` — full dashboard: heatmap, session count, token totals by model, streaks (Pro/Max subscribers)
+
+Continuous visibility without running a command:
+```powershell
+claude config set status_line.show_cost true
+claude config set status_line.show_tokens true
+```
+
+For API/pay-as-you-go billing history (not visible for Pro/Max subscription plans): console.anthropic.com.
+
+## 6. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

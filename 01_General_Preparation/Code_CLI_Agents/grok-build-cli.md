@@ -63,7 +63,17 @@ grok
 grok --version
 ```
 
-## 6. Quick troubleshooting
+## 6. Check token usage / remaining budget
+
+Inside a session:
+```
+/usage
+```
+Shows your current token and credit consumption. Same view is available via `/context` if you specifically want to see how much of the current context window is used.
+
+For API-key/headless use, check remaining credits and spend at console.x.ai.
+
+## 7. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

@@ -64,7 +64,22 @@ $env:GITHUB_TOKEN = "<your-pat>"
 copilot --version
 ```
 
-## 6. Quick troubleshooting
+## 6. Check token usage / remaining budget
+
+Inside a session:
+```
+/usage
+```
+Monitors your session's request consumption against your monthly premium-request cap.
+
+**Note:** unlike some IDE chat usage, Copilot CLI prompts count as **Premium Requests** even with a "default" model — using the CLI as your primary workflow will show up as new premium-request consumption you may not have seen before.
+
+Other ways to check:
+- **Billing overview:** `github.com/settings/billing` → scroll to Metered usage → Copilot, or click **Premium request analytics** for filterable/exportable detail (by model, feature, timeframe).
+- Premium request counters reset on the 1st of each month at 00:00 UTC.
+- Set a budget with alerts at 75/90/100% under GitHub billing settings.
+
+## 7. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

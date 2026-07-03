@@ -59,7 +59,15 @@ Flags any dependency or configuration issues.
   Requires `uv`/`uvx` installed first: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - **VS Code integration:** install the WSL extension in VS Code, then use the AWS Toolkit alongside the CLI for a combined workflow.
 
-## 7. Quick troubleshooting
+## 7. Check token usage / remaining budget
+
+Inside a session:
+```
+/usage
+```
+Shows your current usage and quota information for the active plan (Free/Builder ID or Pro).
+
+## 8. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

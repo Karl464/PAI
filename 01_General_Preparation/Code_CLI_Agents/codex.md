@@ -61,7 +61,19 @@ First run prompts you to sign in — choose **Sign in with ChatGPT** (ties usage
 codex --version
 ```
 
-## 7. Quick troubleshooting
+## 7. Check token usage / remaining budget
+
+Inside a session:
+```
+/status
+```
+Shows remaining percentage for both the rolling 5-hour window and the weekly window, plus current model and plan tier.
+
+- Web dashboard (subscription users): `chatgpt.com/codex/settings/usage` — exact reset timestamps for both windows; lags a few minutes but has the numbers `/status` doesn't (reset time, historical trend).
+- API/pay-as-you-go billing: `platform.openai.com/usage` — token and cost history.
+- **Known caveat:** there's an open bug class where `/status`, the in-app warning banner, and the actual error state can disagree on remaining quota. If the numbers look contradictory, cross-check the web dashboard rather than trusting a single readout.
+
+## 8. Quick troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
